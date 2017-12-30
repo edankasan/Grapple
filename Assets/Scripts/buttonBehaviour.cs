@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class buttonBehaviour : MonoBehaviour {
 
+    public GameObject loadingImage;
+
 	public void LoadScene(string level)
     {
+        loadingImage.SetActive(true);
         SceneManager.LoadScene(level);
     }
 }
