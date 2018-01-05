@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerPlatformerController : PhysicsObject {
 
-    public float maxSpeed = 7;
-    public float jumpTakeOffSpeed = 7;
+    public float maxSpeed = 5;
+    public float jumpTakeOffSpeed = 5;
     public Vector3 GrapplePullDirection;
 
     private SpriteRenderer spriteRenderer;
