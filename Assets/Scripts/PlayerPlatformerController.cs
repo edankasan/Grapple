@@ -14,7 +14,7 @@ public class PlayerPlatformerController : PhysicsObject {
     //grappling hook stuff
     public GameObject grappleShooter;
 
-    private SpringJoint2D grapple;
+    private DistanceJoint2D grapple;
 
     public LineRenderer lineRenderer;
 
@@ -27,7 +27,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
     protected override void ComputeVelocity()
     {
-        if (!hasSpringJoint2D(grappleShooter))
+        if (!hasDistanceJoint2D(grappleShooter))
         {
             Vector2 move = Vector2.zero;
 
@@ -60,6 +60,15 @@ public class PlayerPlatformerController : PhysicsObject {
             targetVelocity = move * maxSpeed;
         }
         else
+        {
+            Vector2 move = Vector2.zero;
+
+            move.x = Input.GetAxis("Horizontal");
+            if (move.x == 0)
+                velocity.y = 0;
+            targetVelocity = move * maxSpeed;
+        }
+        /* else //no control of movement movement while grapple active.
         {
             velocity.x = grapple.connectedAnchor.x - rb2d.position.x;
             velocity.y = grapple.connectedAnchor.y - rb2d.position.y;
@@ -102,15 +111,15 @@ public class PlayerPlatformerController : PhysicsObject {
                 }
             }
         }
-
+        */
         animator.SetBool("grounded", grounded);
-        animator.SetBool("GrappleOn", hasSpringJoint2D(grappleShooter));
+        animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
         animator.SetFloat("velocityX", Mathf.Abs(velocity.x / maxSpeed));
 
     }
     void LateUpdate() //used for the grappling hook
     {
-        if(Input.GetMouseButtonDown(0) && grounded)
+        if(Input.GetMouseButtonDown(0) )//&& grounded)  only jumps while on ground while this is enabled
         {
             Fire();
         }
@@ -140,9 +149,8 @@ public class PlayerPlatformerController : PhysicsObject {
 
         if (hit.collider != null)
         {
-            SpringJoint2D newGrapple = grappleShooter.AddComponent<SpringJoint2D>();
+            DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
             newGrapple.enableCollision = false;
-            newGrapple.frequency = 0.2f; //this doesn't really matter, but why not
             newGrapple.connectedAnchor = hit.point;
             newGrapple.enabled = true;
 
@@ -150,9 +158,9 @@ public class PlayerPlatformerController : PhysicsObject {
             grapple = newGrapple;
         }
     }
-    public static bool hasSpringJoint2D(GameObject obj)
+    public static bool hasDistanceJoint2D(GameObject obj)
     {
-        return obj.GetComponent<SpringJoint2D>() != null;
+        return obj.GetComponent<DistanceJoint2D>() != null;
     }
 }
 
