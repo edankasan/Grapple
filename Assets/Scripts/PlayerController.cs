@@ -71,13 +71,16 @@ public class PlayerController : MonoBehaviour {
             float adjustRope = Input.GetAxisRaw("Vertical");
             if (adjustRope > 0)
                 grapple.distance = grapple.distance - 0.03f;
-            else if(adjustRope < 0)
+            else if(adjustRope < 0 && rb2d.position.y < grapple.connectedAnchor.y)
                 grapple.distance = grapple.distance + 0.03f;
         }
+        animator.SetBool("grounded", grounded);
+        animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
+        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x / moveSpeed));
     }
     private void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(0))//&& grounded)  only jumps while on ground while this is enabled
+        if (Input.GetMouseButtonDown(0))
         {
             Fire();
         }
@@ -105,7 +108,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 offset = Vector3.ClampMagnitude(direction, 1.5f);
         RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, Mathf.Infinity);
 
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.gameObject.layer != 8)
         {
             DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
             newGrapple.enableCollision = false;
