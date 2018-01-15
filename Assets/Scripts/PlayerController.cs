@@ -63,11 +63,9 @@ public class PlayerController : MonoBehaviour {
         {
             float movex = Input.GetAxisRaw("Horizontal");
             if (movex > 0)
-                rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+                rb2d.AddForce(new Vector2(3f, 0f));
             else if (movex < 0)
-                rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-            else
-                rb2d.velocity = new Vector2(0, 0);
+                rb2d.AddForce(new Vector2(-3f, 0f));
             float adjustRope = Input.GetAxisRaw("Vertical");
             if (adjustRope > 0)
                 grapple.distance = grapple.distance - 0.03f;
@@ -77,6 +75,11 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("grounded", grounded);
         animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
         animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x / moveSpeed));
+        bool flipSprite = (spriteRenderer.flipX ? (rb2d.velocity.x > 0.01f) : (rb2d.velocity.x < -0.01f));
+        if (flipSprite)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
     }
     private void LateUpdate()
     {
@@ -106,14 +109,14 @@ public class PlayerController : MonoBehaviour {
         GrapplePullDirection = direction;
         direction = Vector3.Scale(direction, new Vector3(1000, 1000, 1));
         Vector3 offset = Vector3.ClampMagnitude(direction, 1.5f);
-        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, Mathf.Infinity);
-
+        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7);
         if (hit.collider != null && hit.collider.gameObject.layer != 8)
         {
             DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
             newGrapple.enableCollision = false;
             newGrapple.connectedAnchor = hit.point;
             newGrapple.enabled = true;
+            newGrapple.maxDistanceOnly = true;
 
             GameObject.DestroyImmediate(grapple);
             grapple = newGrapple;
