@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            grounded = false;
             float movex = Input.GetAxisRaw("Horizontal");
             if (movex > 0)
                 rb2d.AddForce(new Vector2(3f, 0f));
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour {
             float adjustRope = Input.GetAxisRaw("Vertical");
             if (adjustRope > 0)
                 grapple.distance = grapple.distance - 0.03f;
-            else if(adjustRope < 0 && rb2d.position.y < grapple.connectedAnchor.y)
+            else if(adjustRope < 0 && rb2d.position.y < grapple.connectedAnchor.y && grapple.distance <= 6.97)
                 grapple.distance = grapple.distance + 0.03f;
         }
         animator.SetBool("grounded", grounded);
