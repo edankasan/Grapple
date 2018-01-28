@@ -1200,6 +1200,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114286448456218540, guid: ee3b18ac9027c61418034abf415538d6,
+        type: 2}
+      propertyPath: loadingImage
+      value: 
+      objectReference: {fileID: 707709204}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee3b18ac9027c61418034abf415538d6, type: 2}
   m_IsPrefabParent: 0

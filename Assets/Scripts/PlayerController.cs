@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
 
     protected Rigidbody2D rb2d;
+
+    public GameObject loadingImage;
 
     //grappling hook stuff
 
@@ -81,6 +84,13 @@ public class PlayerController : MonoBehaviour {
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
+
+        if (Input.GetButtonDown("Reset"))
+        {
+            loadingImage.SetActive(true);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
     private void LateUpdate()
     {
@@ -127,4 +137,5 @@ public class PlayerController : MonoBehaviour {
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
     }
+
 }
