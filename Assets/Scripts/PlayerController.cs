@@ -35,63 +35,10 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        initiateKeyControls();
     }
 
     // Update is called once per frame
-    void Update () {
-        if (!hasDistanceJoint2D(grappleShooter))
-        {
-            grounded = false;
-            if (rb2d.velocity.y == 0)
-            {
-                grounded = true;
-            }
-            float movex = Input.GetAxisRaw("Horizontal");
-            if (movex > 0)
-                rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
-            else if (movex < 0)
-                rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-            else
-                rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-            if (Input.GetButtonDown("Jump") && grounded)
-            {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
-            }
-            if (Input.GetButtonUp("Jump") && !grounded)
-            {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            }
-        }
-        else
-        {
-            grounded = false;
-            float movex = Input.GetAxisRaw("Horizontal");
-            if (movex > 0)
-                rb2d.AddForce(new Vector2(3f, 0f));
-            else if (movex < 0)
-                rb2d.AddForce(new Vector2(-3f, 0f));
-            float adjustRope = Input.GetAxisRaw("Vertical");
-            if (adjustRope > 0)
-                grapple.distance = grapple.distance - 0.03f;
-            else if(adjustRope < 0 && rb2d.position.y < grapple.connectedAnchor.y && grapple.distance <= 6.97)
-                grapple.distance = grapple.distance + 0.03f;
-        }
-        animator.SetBool("grounded", grounded);
-        animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
-        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x / moveSpeed));
-        bool flipSprite = (spriteRenderer.flipX ? (rb2d.velocity.x > 0.01f) : (rb2d.velocity.x < -0.01f));
-        if (flipSprite)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-
-        if (Input.GetButtonDown("Reset"))
-        {
-            loadingImage.SetActive(true);
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-    }
     private void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
@@ -133,9 +80,178 @@ public class PlayerController : MonoBehaviour {
             grapple = newGrapple;
         }
     }
-    public static bool hasDistanceJoint2D(GameObject obj)
+
+    public bool hasDistanceJoint2D(GameObject obj)
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
     }
+
+    public void UpdateAnimator()
+    {
+        animator.SetBool("grounded", grounded);
+        animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
+        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x / moveSpeed));
+        bool flipSprite = (spriteRenderer.flipX ? (rb2d.velocity.x > 0.01f) : (rb2d.velocity.x < -0.01f));
+        if (flipSprite)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+    }
+
+    #region TestRegion
+
+    void Update()
+    {
+        if (!hasDistanceJoint2D(grappleShooter))
+        {
+            grounded = false;
+            if (rb2d.velocity.y == 0)
+            {
+                grounded = true;
+            }
+        }
+        else
+        {
+            grounded = false;
+        }
+        UpdateAnimator();
+        foreach (KeyCode key in heldButtonFuncs.Keys)
+        {
+            if (Input.GetKey(key) == true)
+                if(heldButtonFuncs[key].Invoke() == true)
+                    break;
+
+            if (Input.GetKeyUp(key) == true && releasedButtonFuncs.ContainsKey(key) == true)
+                if (releasedButtonFuncs[key].Invoke() == true)
+                    break;
+        }
+
+    }
+
+
+    // On button funcs are functions that you run when a button is
+    // pressed. It returns a boolean to tell you whether that button
+    // wants to STOP input or not. For example, if pressing the W key
+    // makes you jump and gamelogic dictates that you may NOT take an action
+    // after jumping you might want to return TRUE so as to NOT accept any
+    // more inputs.
+    delegate bool OnButtonFunc();
+    Dictionary<KeyCode, OnButtonFunc> heldButtonFuncs;
+    Dictionary<KeyCode, OnButtonFunc> releasedButtonFuncs;
+
+    void initiateKeyControls(Dictionary<KeyCode, OnButtonFunc> preset = null)
+    {
+        if (preset != null)
+        {
+            heldButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>(preset);
+            return;
+        }
+
+        heldButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>();
+        releasedButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>();
+
+        heldButtonFuncs[KeyCode.W] = OnWHeld;
+        heldButtonFuncs[KeyCode.A] = OnAHeld;
+        heldButtonFuncs[KeyCode.D] = OnDHeld;
+        heldButtonFuncs[KeyCode.S] = OnSHeld;
+        heldButtonFuncs[KeyCode.R] = OnRHeld;
+        releasedButtonFuncs[KeyCode.A] = OnAReleased;
+        releasedButtonFuncs[KeyCode.D] = OnDReleased;
+        releasedButtonFuncs[KeyCode.W] = OnWReleased;
+    }
+
+    public bool OnDHeld()
+    {
+        if (!hasDistanceJoint2D(grappleShooter))
+        {
+            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+        }
+        else
+        {
+            rb2d.AddForce(new Vector2(3f, 0f));
+        }
+
+        return false;
+    }
+
+    public bool OnAHeld()
+    {
+        if (!hasDistanceJoint2D(grappleShooter))
+        {
+            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
+        }
+        else
+        {
+            rb2d.AddForce(new Vector2(-3f, 0f));
+        }
+
+        return false;
+    }
+
+    public bool OnWHeld()
+    {
+        if (!hasDistanceJoint2D(grappleShooter) && grounded)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
+        }
+        else
+        {
+            grapple.distance = grapple.distance - 0.03f;
+        }
+
+            return false;
+    }
+
+    public bool OnSHeld()
+    {
+        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < grapple.connectedAnchor.y && grapple.distance <= 6.97)
+        {
+            grapple.distance = grapple.distance + 0.03f;
+        }
+
+        return false;
+    }
+
+    public bool OnRHeld()
+    {
+        loadingImage.SetActive(true);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+
+        return false;
+    }
+
+    public bool OnAReleased()
+    {
+        if (!hasDistanceJoint2D(grappleShooter))
+        {
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        }
+
+        return false;
+    }
+
+    public bool OnDReleased()
+    {
+        if (!hasDistanceJoint2D(grappleShooter))
+        {
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        }
+
+        return false;
+    }
+
+    public bool OnWReleased()
+    {
+        if (!hasDistanceJoint2D(grappleShooter) && rb2d.velocity.y > 0)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        }
+
+        return false;
+    }
+
+    #endregion
+
 
 }
