@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
             grapple = newGrapple;
         }
     }
-
+    */
     public bool hasDistanceJoint2D(GameObject obj)
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
@@ -115,16 +115,8 @@ public class PlayerController : MonoBehaviour {
             grounded = false;
         }
         UpdateAnimator();
-        foreach (KeyCode key in heldButtonFuncs.Keys)
-        {
-            if (Input.GetKey(key) == true)
-                if(heldButtonFuncs[key].Invoke() == true)
-                    break;
 
-            if (Input.GetKeyUp(key) == true && releasedButtonFuncs.ContainsKey(key) == true)
-                if (releasedButtonFuncs[key].Invoke() == true)
-                    break;
-        }
+        InputController.Instance.CheckForInput();
 
     }
 
@@ -139,27 +131,43 @@ public class PlayerController : MonoBehaviour {
     Dictionary<KeyCode, OnButtonFunc> heldButtonFuncs;
     Dictionary<KeyCode, OnButtonFunc> releasedButtonFuncs;
 
-    void initiateKeyControls(Dictionary<KeyCode, OnButtonFunc> preset = null)
+    void initiateKeyControls()
     {
-        if (preset != null)
-        {
-            heldButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>(preset);
-            return;
-        }
+        //Here we will pass the inputcontroller our keyset and mouseset.
+        Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset = new Dictionary<KeyState, MouseManager.MouseFunc[]>();
+        Dictionary<KeyCode, KeyboardManager.OnButtonFunc>[] keyboardPreset = new Dictionary<KeyCode, KeyboardManager.OnButtonFunc>[3];
+        keyboardPreset[0] = new Dictionary<KeyCode, KeyboardManager.OnButtonFunc>();
+        keyboardPreset[1] = new Dictionary<KeyCode, KeyboardManager.OnButtonFunc>();
+        keyboardPreset[2] = new Dictionary<KeyCode, KeyboardManager.OnButtonFunc>();
 
-        heldButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>();
-        releasedButtonFuncs = new Dictionary<KeyCode, OnButtonFunc>();
+        #region setting keyboard presets
+        keyboardPreset[1].Add(KeyCode.W, OnWHeld);
+        keyboardPreset[1].Add(KeyCode.A, OnAHeld);
+        keyboardPreset[1].Add(KeyCode.S, OnSHeld);
+        keyboardPreset[1].Add(KeyCode.D, OnDHeld);
+        keyboardPreset[1].Add(KeyCode.R, OnRHeld);
 
-        heldButtonFuncs[KeyCode.W] = OnWHeld;
-        heldButtonFuncs[KeyCode.A] = OnAHeld;
-        heldButtonFuncs[KeyCode.D] = OnDHeld;
-        heldButtonFuncs[KeyCode.S] = OnSHeld;
-        heldButtonFuncs[KeyCode.R] = OnRHeld;
-        releasedButtonFuncs[KeyCode.A] = OnAReleased;
-        releasedButtonFuncs[KeyCode.D] = OnDReleased;
-        releasedButtonFuncs[KeyCode.W] = OnWReleased;
+        keyboardPreset[2].Add(KeyCode.W, OnWReleased);
+        keyboardPreset[2].Add(KeyCode.A, OnAReleased);
+        keyboardPreset[2].Add(KeyCode.D, OnDReleased);
+        #endregion
+
+        #region setting mouse presets
+        MouseManager.MouseFunc[] PressedMouseButtons = new MouseManager.MouseFunc[3];
+        PressedMouseButtons[0] = OnLeftClickPressed;
+        MouseManager.MouseFunc[] ReleasedMouseButtons = new MouseManager.MouseFunc[3];
+        ReleasedMouseButtons[0] = OnLeftClickReleased;
+        MouseManager.MouseFunc[] HeldMouseButtons = new MouseManager.MouseFunc[3];
+        HeldMouseButtons[0] = OnLeftClickHeld;
+        mousePreset.Add(KeyState.Pressed, PressedMouseButtons);
+        mousePreset.Add(KeyState.Held, HeldMouseButtons);
+        mousePreset.Add(KeyState.Released, ReleasedMouseButtons);
+        #endregion
+
+        InputController.Instance.MouseManager.InitiateKeyControls(mousePreset);
+        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
     }
-
+    #region keyboard control funcs
     public bool OnDHeld()
     {
         if (!hasDistanceJoint2D(grappleShooter))
@@ -196,7 +204,10 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            grapple.distance = grapple.distance - 0.03f;
+            if (hasDistanceJoint2D(grappleShooter))
+            {
+                grapple.distance = grapple.distance - 0.03f;
+            }
         }
 
             return false;
@@ -245,11 +256,51 @@ public class PlayerController : MonoBehaviour {
     {
         if (!hasDistanceJoint2D(grappleShooter) && rb2d.velocity.y > 0)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y / 1.5f);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y / 1.25f);
         }
 
         return false;
     }
+
+    #endregion
+
+    #region mouse control funcs
+    public void OnLeftClickPressed()
+    { 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 position = grappleShooter.transform.position;
+        Vector3 direction = mousePosition - position;
+        GrapplePullDirection = direction;
+        direction = Vector3.Scale(direction, new Vector3(1000, 1000, 1));
+        Vector3 offset = Vector3.ClampMagnitude(direction, 1.5f);
+        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7);
+        if (hit.collider != null && hit.collider.gameObject.layer != 8)
+        {
+            DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
+            newGrapple.enableCollision = false;
+            newGrapple.connectedAnchor = hit.point;
+            newGrapple.enabled = true;
+            newGrapple.maxDistanceOnly = true;
+
+            GameObject.DestroyImmediate(grapple);
+            grapple = newGrapple;
+        }
+    }
+    public void OnLeftClickHeld()
+    {
+        lineRenderer.enabled = true;
+        lineRenderer.positionCount = 2;
+        Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
+        Vector3 position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
+        lineRenderer.SetPosition(0, position0);
+        lineRenderer.SetPosition(1, position1);
+    }
+    public void OnLeftClickReleased()
+    {
+        GameObject.DestroyImmediate(grapple);
+        lineRenderer.enabled = false;
+    }
+    #endregion
 
     #endregion
 
