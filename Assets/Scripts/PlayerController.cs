@@ -284,20 +284,24 @@ public class PlayerController : MonoBehaviour {
 
             GameObject.DestroyImmediate(grapple);
             grapple = newGrapple;
+            Debug.Log("ding");
         }
     }
     public void OnLeftClickHeld()
     {
-        lineRenderer.enabled = true;
-        lineRenderer.positionCount = 2;
-        Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
-        Vector3 position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
-        lineRenderer.SetPosition(0, position0);
-        lineRenderer.SetPosition(1, position1);
+        if (hasDistanceJoint2D(grappleShooter))
+        {
+            lineRenderer.enabled = true;
+            lineRenderer.positionCount = 2;
+            Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
+            Vector3 position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
+            lineRenderer.SetPosition(0, position0);
+            lineRenderer.SetPosition(1, position1);
+        }
     }
     public void OnLeftClickReleased()
     {
-        GameObject.DestroyImmediate(grapple);
+        GameObject.Destroy(grapple);
         lineRenderer.enabled = false;
     }
     #endregion

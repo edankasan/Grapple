@@ -15,8 +15,4 @@ public class FlowerPickup : MonoBehaviour {
         rb2d.gameObject.SetActive(false);
         flowerText.SetActive(true);
     }
-    private IEnumerator FlowerMessageDelay()
-    {
-        yield return new WaitForSecondsRealtime(5.0f);
-    }
 }
