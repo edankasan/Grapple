@@ -18,6 +18,7 @@ public class JumpPad : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("ding");
-        collision.collider.GetComponent<Rigidbody2D>().velocity = new Vector2(collision.otherCollider.GetComponent<Rigidbody2D>().velocity.x, collision.otherCollider.GetComponent<Rigidbody2D>().velocity.y + jumppower);
+        ContactPoint2D test = collision.contacts[0];
+        collision.collider.GetComponent<Rigidbody2D>().velocity = new Vector2(-(test.normal.x * jumppower), -(test.normal.y * jumppower));
     }
 }
