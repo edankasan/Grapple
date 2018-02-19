@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
+    public static PlayerController Instance { get; protected set; }
+
     public float minGroundNormalY = 0.65f;
     public float jumpPower;
     public float moveSpeed;
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour {
     public Vector3 GrapplePullDirection;
 
     void Awake () {
+        Instance = this;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -153,19 +157,26 @@ public class PlayerController : MonoBehaviour {
         #endregion
 
         #region setting mouse presets
+        SetMouseControls(mousePreset);
+        #endregion
+
+        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
+    }
+
+    public void SetMouseControls(Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset)
+    {
         MouseManager.MouseFunc[] PressedMouseButtons = new MouseManager.MouseFunc[3];
         PressedMouseButtons[0] = OnLeftClickPressed;
         MouseManager.MouseFunc[] ReleasedMouseButtons = new MouseManager.MouseFunc[3];
         ReleasedMouseButtons[0] = OnLeftClickReleased;
         MouseManager.MouseFunc[] HeldMouseButtons = new MouseManager.MouseFunc[3];
         HeldMouseButtons[0] = OnLeftClickHeld;
-        mousePreset.Add(KeyState.Pressed, PressedMouseButtons);
-        mousePreset.Add(KeyState.Held, HeldMouseButtons);
-        mousePreset.Add(KeyState.Released, ReleasedMouseButtons);
-        #endregion
-
+        mousePreset[KeyState.Pressed] = PressedMouseButtons;
+        mousePreset[KeyState.Held] = HeldMouseButtons;
+        mousePreset[KeyState.Released] = ReleasedMouseButtons;
+        
         InputController.Instance.MouseManager.InitiateKeyControls(mousePreset);
-        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
+
     }
     #region keyboard control funcs
     public bool OnDHeld()
