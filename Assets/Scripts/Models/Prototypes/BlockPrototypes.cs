@@ -39,8 +39,7 @@ public static class BlockPrototypes {
 
         blocks.Add("JumpPad", new Block(
             "JumpPad",
-            0,
-            0,
+            new Rect(0, 0, 1, 1),
             jumpAction,
             jumpParameters
             ));
@@ -78,8 +77,7 @@ public static class BlockPrototypes {
 
         blocks.Add("CrumbleBlock", new Block(
             "CrumbleBlock",
-            0,
-            0,
+            new Rect(0, 0, 1, 1),
             crumbleAction,
             crumbleParameters
             ));
@@ -88,8 +86,7 @@ public static class BlockPrototypes {
         #region basic block
         blocks.Add("BasicBlock", new Block(
             "BasicBlock",
-            0,
-            0,
+            new Rect(0, 0, 1, 1),
             null,
             null
             ));
@@ -98,8 +95,7 @@ public static class BlockPrototypes {
         #region steel block
         blocks.Add("SteelBlock", new Block(
             "SteelBlock",
-            0,
-            0,
+            new Rect(0, 0, 1, 1),
             null,
             null
             ));
