@@ -14,12 +14,13 @@ public class Block {
 
     public Dictionary<string, float> Parameters { get; protected set; }
 
-    public Block(string name, Rect rect, Action<Collision2D, Block> onlands = null, Dictionary<string, float> parameters = null)
+    public Block(string name, float x, float y, Action<Collision2D, Block> onlands = null, Dictionary<string, float> parameters = null)
     {
         OnLand = onlands;
         Name = name;
 
-        Rect = rect;
+        X = x;
+        Y = y;
 
         Parameters = parameters == null ? new Dictionary<string, float>() : new Dictionary<string, float>(parameters);
     }
@@ -27,7 +28,8 @@ public class Block {
     Block(Block other)
     {
         Name = other.Name;
-        Rect = other.Rect;
+        X = other.X;
+        Y = other.Y;
         OnLand = other.OnLand;
         Parameters = new Dictionary<string, float>(other.Parameters);
     }
@@ -40,7 +42,8 @@ public class Block {
     public void SetPos(float x, float y)
     {
         // Maybe check bounds or idk...
-        Rect.setPosition(x, y);
+        X = x;
+        Y = y;
     }
 
     public void ChangeParam(string paramName, float val)

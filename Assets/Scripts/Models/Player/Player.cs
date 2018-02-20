@@ -21,6 +21,5 @@ public class Player
         // If there is a collision between the player and
         // the given block, AND the player is above it:
         // that means he is standing on it!
-        return false;
     }
 }
