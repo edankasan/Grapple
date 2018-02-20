@@ -78,7 +78,7 @@ public class KeyboardManager {
 
         foreach (KeyCode key in preset[2].Keys)
         {
-            SetOnReleasedKey(key, preset[2][key];
+            SetOnReleasedKey(key, preset[2][key]);
         }
     }
 
