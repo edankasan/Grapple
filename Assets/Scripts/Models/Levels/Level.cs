@@ -7,6 +7,7 @@ public class Level {
     public int Value { get; protected set; }
 
     public List<Block> Blocks { get; protected set; }
+    public Player Player { get; protected set; }
 
     public Action<Block> OnChanged;
 
