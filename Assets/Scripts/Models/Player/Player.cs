@@ -15,4 +15,11 @@ public class Player
         Name = name;
         Rect = rect;
     }
+
+    public bool IsStandingOn(Block block)
+    {
+        // If there is a collision between the player and
+        // the given block, AND the player is above it:
+        // that means he is standing on it!
+    }
 }

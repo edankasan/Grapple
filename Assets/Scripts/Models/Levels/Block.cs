@@ -8,8 +8,7 @@ public class Block {
     
 	public string Name { get; protected set; }
 
-    public float X { get; protected set; }
-    public float Y { get; protected set; }
+    public Rect Rect { get; protected set; }
 
     public Action<Collision2D, Block> OnLand;
 
