@@ -34,20 +34,76 @@ public static class BlockPrototypes {
                 collision.collider.GetComponent<Rigidbody2D>().velocity = new Vector2(-(test.normal.x * jumpVal), -(test.normal.y * jumpVal));
             };
 
-
-        Dictionary<string, float> parameters = new Dictionary<string, float>();
-        parameters["JumpStrength"] = 5f;
+        Dictionary<string, float> jumpParameters = new Dictionary<string, float>();
+        jumpParameters["JumpStrength"] = 5f;
 
         blocks.Add("JumpPad", new Block(
             "JumpPad",
             jumpAction,
             0,
             0,
-            parameters
+            jumpParameters
             ));
 
         #endregion
 
+        #region CrumblingBlock
+
+        Action<Collision2D, Block> crumbleAction;
+        crumbleAction = (collision, block) =>
+        {
+            float counter;
+            if (block.Parameters.ContainsKey("CrumbleCounter") && block.Parameters["CrumbleCounter"] > 0)
+                counter = block.Parameters["CrumbleCounter"];
+            else
+            {
+                counter = 3f;
+            }
+            if (counter >= 0)
+            {
+                //destroy the block here;
+                if (collision.collider.GetComponent<DistanceJoint2D>() != null)
+                {
+                    GameObject.Destroy(collision.collider.GetComponent<DistanceJoint2D>());
+                    collision.collider.GetComponent<LineRenderer>().enabled = false;
+                }
+            }
+            if (counter < 0)
+            {
+                counter++;
+            }
+        };
+        Dictionary<string, float> crumbleParameters = new Dictionary<string, float>();
+        crumbleParameters["CrumbleCounter"] = 3f;
+
+        blocks.Add("CrumbleBlock", new Block(
+            "CrumbleBlock",
+            crumbleAction,
+            0,
+            0,
+            crumbleParameters
+            ));
+        #endregion
+
+        #region basic block
+        blocks.Add("BasicBlock", new Block(
+            "BasicBlock",
+            null,
+            0,
+            0,
+            null
+            ));
+        #endregion
+
+        #region steel block
+        blocks.Add("SteelBlock", new Block(
+            "SteelBlock",
+            null,
+            0,
+            0,
+            null
+            ));
+        #endregion
         return blocks;
     }
     

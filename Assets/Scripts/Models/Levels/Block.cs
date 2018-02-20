@@ -15,7 +15,7 @@ public class Block {
 
     public Dictionary<string, float> Parameters { get; protected set; }
 
-    public Block(string name, Action<Collision2D, Block> onlands, float x, float y, Dictionary<string, float> parameters = null)
+    public Block(string name, Action<Collision2D, Block> onlands = null, float x, float y, Dictionary<string, float> parameters = null)
     {
         OnLand = onlands;
         Name = name;
