@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class MouseManager {
 
@@ -24,18 +23,6 @@ public class MouseManager {
     public void CheckMouseContext()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (EventSystem.current.IsPointerOverGameObject() == true)
-        {
-            Debug.Log("We are over an event system GO");
-            Funcs[KeyState.Held][0] = () => { };
-            Funcs[KeyState.Released][0] = () => { };
-            Funcs[KeyState.Pressed][0] = () => { };
-        }
-        else
-        {
-            PlayerController.Instance.SetMouseControls(Funcs);
-        }
 
 
     }
