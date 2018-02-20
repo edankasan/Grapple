@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerControllerOld : MonoBehaviour {
 
-    public static PlayerController Instance { get; protected set; }
-
+    public static PlayerControllerOld Instance { get; protected set; }
+    
     public float minGroundNormalY = 0.65f;
     public float jumpPower;
     public float moveSpeed;
@@ -319,5 +319,5 @@ public class PlayerController : MonoBehaviour {
 
     #endregion
 
-
+    
 }

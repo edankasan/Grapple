@@ -10,13 +10,13 @@ public class Block {
 
     public Rect Rect { get; protected set; }
 
-    public Action<Collision2D, Block> OnLand;
+    public Action<Collision2D, Block> OnCollide;
 
     public Dictionary<string, float> Parameters { get; protected set; }
 
-    public Block(string name, Rect rect, Action<Collision2D, Block> onlands = null, Dictionary<string, float> parameters = null)
+    public Block(string name, Rect rect, Action<Collision2D, Block> onCollide = null, Dictionary<string, float> parameters = null)
     {
-        OnLand = onlands;
+        OnCollide = onCollide;
         Name = name;
 
         Rect = rect;
@@ -28,7 +28,7 @@ public class Block {
     {
         Name = other.Name;
         Rect = other.Rect;
-        OnLand = other.OnLand;
+        OnCollide = other.OnCollide;
         Parameters = new Dictionary<string, float>(other.Parameters);
     }
 

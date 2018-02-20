@@ -37,18 +37,13 @@ public class Rect
 
     public bool CollidingWith(Rect rect)
     {
-        float distanceX = this.X - rect.X;
-        if (distanceX < 0)
-        {
-            distanceX = distanceX * -1;
-        }
-        float distanceY = this.Y - rect.Y;
-        if (distanceY < 0)
-        {
-            distanceY = distanceY * -1;
-        }
+        float distanceX = Mathf.Abs(this.X - rect.X);
+
+        float distanceY = Mathf.Abs(this.Y - rect.Y);
+
         bool CollidingOrOverlapping = ((distanceX <= (this.Width/2 + rect.Width/2)) && (distanceY <= (this.Height / 2 + rect.Height / 2)));
         bool Colliding = ((distanceX == (this.Width / 2 + rect.Width / 2)) && (distanceY == (this.Height / 2 + rect.Height / 2)));
-        return false;
+
+        return CollidingOrOverlapping;
     }
 }

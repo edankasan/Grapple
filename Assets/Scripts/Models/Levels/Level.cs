@@ -8,6 +8,8 @@ public class Level {
 
     public List<Block> Blocks { get; protected set; }
 
+    public Player Player { get; protected set; }
+
     public Action<Block> OnChanged;
 
     public Level(int val, string name, List<Block> blocks = null)

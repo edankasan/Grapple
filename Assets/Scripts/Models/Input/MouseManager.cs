@@ -34,7 +34,7 @@ public class MouseManager {
         }
         else
         {
-            PlayerController.Instance.SetMouseControls(Funcs);
+            PlayerControllerOld.Instance.SetMouseControls(Funcs);
         }
 
 

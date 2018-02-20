@@ -21,7 +21,6 @@ public static class BlockPrototypes {
 
         jumpAction = (collision, block) =>
             {
-
                 Debug.Log("ding");
                 float jumpVal;
 
