@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    public float minGroundNormalY = 0.65f;
+    public static PlayerController Instance { get; protected set; }
+
     public float jumpPower;
     public float moveSpeed;
     protected bool grounded;
@@ -32,55 +33,14 @@ public class PlayerController : MonoBehaviour {
     public Vector3 GrapplePullDirection;
 
     void Awake () {
+        Instance = this;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         initiateKeyControls();
     }
 
-    // Update is called once per frame
-    /*private void LateUpdate()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
-        if (grapple != null)
-        {
-            lineRenderer.enabled = true;
-            lineRenderer.positionCount = 2;
-            Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
-            Vector3 position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
-            lineRenderer.SetPosition(0, position0);
-            lineRenderer.SetPosition(1, position1);
-            if (Input.GetMouseButtonUp(0))
-                GameObject.DestroyImmediate(grapple);
-        }
-        else
-            lineRenderer.enabled = false;
-    }
-    void Fire()
-    {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 position = grappleShooter.transform.position;
-        Vector3 direction = mousePosition - position;
-        GrapplePullDirection = direction;
-        direction = Vector3.Scale(direction, new Vector3(1000, 1000, 1));
-        Vector3 offset = Vector3.ClampMagnitude(direction, 1.5f);
-        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7);
-        if (hit.collider != null && hit.collider.gameObject.layer != 8)
-        {
-            DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
-            newGrapple.enableCollision = false;
-            newGrapple.connectedAnchor = hit.point;
-            newGrapple.enabled = true;
-            newGrapple.maxDistanceOnly = true;
-
-            GameObject.DestroyImmediate(grapple);
-            grapple = newGrapple;
-        }
-    }
-    */
     public bool hasDistanceJoint2D(GameObject obj)
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
@@ -98,7 +58,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    #region TestRegion
 
     void Update()
     {
@@ -152,21 +111,29 @@ public class PlayerController : MonoBehaviour {
         keyboardPreset[2].Add(KeyCode.D, OnDReleased);
         #endregion
 
+        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
+
         #region setting mouse presets
+        SetMouseControls(mousePreset);
+        #endregion
+
+        InputController.Instance.MouseManager.InitiateKeyControls(mousePreset);
+
+    }
+
+    public void SetMouseControls(Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset)
+    {
         MouseManager.MouseFunc[] PressedMouseButtons = new MouseManager.MouseFunc[3];
         PressedMouseButtons[0] = OnLeftClickPressed;
         MouseManager.MouseFunc[] ReleasedMouseButtons = new MouseManager.MouseFunc[3];
         ReleasedMouseButtons[0] = OnLeftClickReleased;
         MouseManager.MouseFunc[] HeldMouseButtons = new MouseManager.MouseFunc[3];
         HeldMouseButtons[0] = OnLeftClickHeld;
-        mousePreset.Add(KeyState.Pressed, PressedMouseButtons);
-        mousePreset.Add(KeyState.Held, HeldMouseButtons);
-        mousePreset.Add(KeyState.Released, ReleasedMouseButtons);
-        #endregion
-
-        InputController.Instance.MouseManager.InitiateKeyControls(mousePreset);
-        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
+        mousePreset[KeyState.Pressed] = PressedMouseButtons;
+        mousePreset[KeyState.Held] = HeldMouseButtons;
+        mousePreset[KeyState.Released] = ReleasedMouseButtons;
     }
+
     #region keyboard control funcs
     public bool OnDHeld()
     {
@@ -306,7 +273,6 @@ public class PlayerController : MonoBehaviour {
     }
     #endregion
 
-    #endregion
 
 
 }
