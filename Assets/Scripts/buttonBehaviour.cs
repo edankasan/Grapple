@@ -12,5 +12,4 @@ public class buttonBehaviour : MonoBehaviour {
         loadingImage.SetActive(true);
         SceneManager.LoadScene(level);
     }
-
 }

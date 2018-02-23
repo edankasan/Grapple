@@ -5,15 +5,6 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour {
     protected Rigidbody2D rb2d;
     public float jumppower;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
