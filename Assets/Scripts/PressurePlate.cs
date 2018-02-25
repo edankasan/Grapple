@@ -8,7 +8,7 @@ public class PressurePlate : MonoBehaviour {
 
     public void Awake()
     {
-        reactiveState = reactive.active;
+        reactiveState = reactive.activeInHierarchy;
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

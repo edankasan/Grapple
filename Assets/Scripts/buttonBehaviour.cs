@@ -9,7 +9,16 @@ public class buttonBehaviour : MonoBehaviour {
 
 	public void LoadScene(string level)
     {
-        loadingImage.SetActive(true);
-        SceneManager.LoadScene(level);
+        if (level == "current")
+        {
+            loadingImage.SetActive(true);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+        else
+        {
+            loadingImage.SetActive(true);
+            SceneManager.LoadScene(level);
+        }
     }
 }
