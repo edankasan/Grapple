@@ -8,7 +8,7 @@ public class CrumbleBlock : MonoBehaviour {
     public Sprite broken;
     public Sprite crumbling;
     public Sprite[] order;
-    int counter = 0;
+    public int counter = 0;
 	// Use this for initialization
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = complete;
@@ -16,7 +16,8 @@ public class CrumbleBlock : MonoBehaviour {
         order[0] = complete;
         order[1] = broken;
         order[2] = crumbling;
-	}
+        GetComponent<SpriteRenderer>().sprite = order[counter];
+    }
 
     private void OnCollisionExit2D(Collision2D collision)
     {

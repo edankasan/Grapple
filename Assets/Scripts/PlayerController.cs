@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour {
             newGrapple.connectedAnchor = hit.point;
             newGrapple.enabled = true;
             newGrapple.maxDistanceOnly = true;
+            newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
 
             GameObject.DestroyImmediate(grapple);
             grapple = newGrapple;
