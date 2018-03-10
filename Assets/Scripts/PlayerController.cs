@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool OnSHeld()
     {
-        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < grapple.connectedBody.position.y && grapple.distance <= 6.97)
+        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < grapple.connectedAnchor.y && grapple.distance <= 6.97)
         {
             grapple.distance = grapple.distance + 0.03f;
         }
@@ -240,10 +240,17 @@ public class PlayerController : MonoBehaviour {
             newGrapple.enableCollision = false;
             newGrapple.enabled = true;
             newGrapple.maxDistanceOnly = true;
-            newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
             newGrapple.enableCollision = true;
-
-
+            if (hit.collider.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Dynamic)
+            {
+                newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
+                Debug.Log("ding1");
+            }
+            else
+            {
+                newGrapple.connectedAnchor = hit.point;
+                Debug.Log("ding2");
+            }
             GameObject.DestroyImmediate(grapple);
             grapple = newGrapple;
             Debug.Log("ding");
@@ -256,7 +263,15 @@ public class PlayerController : MonoBehaviour {
             lineRenderer.enabled = true;
             lineRenderer.positionCount = 2;
             Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
-            Vector3 position1 = new Vector3(grapple.connectedBody.position.x, grapple.connectedBody.position.y, -5);
+            Vector3 position1;
+            if (grapple.connectedBody != null)
+            {
+                position1 = new Vector3(grapple.connectedBody.position.x, grapple.connectedBody.position.y, -5);
+            }
+            else
+            {
+                position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
+            }
             lineRenderer.SetPosition(0, position0);
             lineRenderer.SetPosition(1, position1);
         }
