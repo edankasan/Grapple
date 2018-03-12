@@ -61,7 +61,15 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-            grounded = false;
+        if(Mathf.Abs(rb2d.velocity.y) < 0.0005)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        }
+        if (Mathf.Abs(rb2d.velocity.x) < 0.05)
+        {
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+        }
+        grounded = false;
             if (rb2d.velocity.y == 0)
             {
                 grounded = true;
@@ -241,19 +249,22 @@ public class PlayerController : MonoBehaviour {
             newGrapple.enabled = true;
             newGrapple.maxDistanceOnly = true;
             newGrapple.enableCollision = true;
-            if (hit.collider.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Dynamic)
+            if (hit.collider.GetComponent<Rigidbody2D>() != null)
             {
-                newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
-                Debug.Log("ding1");
+                if (hit.collider.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Dynamic)
+                {
+                    newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
+                    Debug.Log("ding1");
+                }
+                else
+                {
+                    newGrapple.connectedAnchor = hit.point;
+                    Debug.Log("ding2");
+                }
+                GameObject.DestroyImmediate(grapple);
+                grapple = newGrapple;
+                Debug.Log("ding");
             }
-            else
-            {
-                newGrapple.connectedAnchor = hit.point;
-                Debug.Log("ding2");
-            }
-            GameObject.DestroyImmediate(grapple);
-            grapple = newGrapple;
-            Debug.Log("ding");
         }
     }
     public void OnLeftClickHeld()
@@ -264,16 +275,19 @@ public class PlayerController : MonoBehaviour {
             lineRenderer.positionCount = 2;
             Vector3 position0 = new Vector3(grappleShooter.transform.position.x, grappleShooter.transform.position.y, -5);
             Vector3 position1;
-            if (grapple.connectedBody != null)
+            if (grapple != null)
             {
-                position1 = new Vector3(grapple.connectedBody.position.x, grapple.connectedBody.position.y, -5);
+                if (grapple.connectedBody != null)
+                {
+                    position1 = new Vector3(grapple.connectedBody.position.x, grapple.connectedBody.position.y, -5);
+                }
+                else
+                {
+                    position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
+                }
+                lineRenderer.SetPosition(0, position0);
+                lineRenderer.SetPosition(1, position1);
             }
-            else
-            {
-                position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
-            }
-            lineRenderer.SetPosition(0, position0);
-            lineRenderer.SetPosition(1, position1);
         }
     }
     public void OnLeftClickReleased()

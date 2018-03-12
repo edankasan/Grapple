@@ -48,3 +48,6 @@ TagManager:
   - name: Loading Image
     uniqueID: 1290502503
     locked: 0
+  - name: Frontal Blocks
+    uniqueID: 2749498193
+    locked: 0

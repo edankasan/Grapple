@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class buttonBehaviour : MonoBehaviour {
 
     public GameObject loadingImage;
+    
 
-	public void LoadScene(string level)
+
+    public void LoadScene(string level)
     {
         if (level == "current")
         {
@@ -19,6 +21,17 @@ public class buttonBehaviour : MonoBehaviour {
         {
             loadingImage.SetActive(true);
             SceneManager.LoadScene(level);
+        }
+    }
+    public void ToggleCamera(GameObject PlayerFollower)
+    {
+        if(PlayerFollower.activeInHierarchy)
+        {
+            PlayerFollower.SetActive(false);
+        }
+        else
+        {
+            PlayerFollower.SetActive(true);
         }
     }
 }

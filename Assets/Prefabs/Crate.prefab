@@ -9,45 +9,65 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1061588340779000}
+  m_RootGameObject: {fileID: 1500088045555670}
   m_IsPrefabParent: 1
---- !u!1 &1061588340779000
+--- !u!1 &1500088045555670
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4461037382510390}
-  - component: {fileID: 212350969990475504}
-  - component: {fileID: 114964204639001608}
-  - component: {fileID: 61148332911535334}
+  - component: {fileID: 4394925886301340}
+  - component: {fileID: 212862958340086850}
+  - component: {fileID: 50207545980826974}
+  - component: {fileID: 61967503773365778}
   m_Layer: 0
-  m_Name: Pressure Plate
-  m_TagString: Terrain
+  m_Name: Crate
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4461037382510390
+--- !u!4 &4394925886301340
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061588340779000}
+  m_GameObject: {fileID: 1500088045555670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.96, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61148332911535334
+--- !u!50 &50207545980826974
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500088045555670}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 3
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: be64b67a82991d84387aa3679d0423ae, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61967503773365778
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061588340779000}
+  m_GameObject: {fileID: 1500088045555670}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -58,36 +78,21 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.15}
-    newSize: {x: 0.75, y: 0.15}
+    oldSize: {x: 1.25, y: 1.2}
+    newSize: {x: 1.25, y: 1.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.15}
+  m_Size: {x: 1.25, y: 1.2}
   m_EdgeRadius: 0
---- !u!114 &114964204639001608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061588340779000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 759fe0906a5720c4f83293177c660dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactive: {fileID: 0}
-  reactiveState: 0
-  on: {fileID: 21300002, guid: f6d380824900156409c27ea6824d7bcf, type: 3}
-  off: {fileID: 21300000, guid: f6d380824900156409c27ea6824d7bcf, type: 3}
---- !u!212 &212350969990475504
+--- !u!212 &212862958340086850
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061588340779000}
+  m_GameObject: {fileID: 1500088045555670}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -113,15 +118,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1545469103
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f6d380824900156409c27ea6824d7bcf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cce26861a55f0944c91226b6d2a917d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.15}
+  m_Size: {x: 1.25, y: 1.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
