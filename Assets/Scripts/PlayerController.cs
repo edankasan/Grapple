@@ -34,16 +34,20 @@ public class PlayerController : MonoBehaviour {
 
     void Awake () {
         Instance = this;
-
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         initiateKeyControls();
     }
-
     public bool hasDistanceJoint2D(GameObject obj)
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
+    }
+
+    public bool isGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.down, 0.001f);
+        return (hit && hit.collider.name != "Player");
     }
 
     public void UpdateAnimator()
@@ -69,11 +73,7 @@ public class PlayerController : MonoBehaviour {
         {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
-        grounded = false;
-            if (rb2d.velocity.y == 0)
-            {
-                grounded = true;
-            }
+        grounded = isGrounded();
         UpdateAnimator();
 
         InputController.Instance.CheckForInput();
@@ -183,11 +183,11 @@ public class PlayerController : MonoBehaviour {
 
     public bool OnSHeld()
     {
-        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < grapple.connectedAnchor.y && grapple.distance <= 6.97)
+        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y) && grapple.distance <= 6.97)
         {
             grapple.distance = grapple.distance + 0.03f;
         }
-
+        Debug.Log(rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y));
         return false;
     }
 
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour {
     #region mouse control funcs
     public void OnLeftClickPressed()
     { 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
         Vector3 position = grappleShooter.transform.position;
         Vector3 direction = mousePosition - position;
         GrapplePullDirection = direction;
@@ -251,19 +251,13 @@ public class PlayerController : MonoBehaviour {
             newGrapple.enableCollision = true;
             if (hit.collider.GetComponent<Rigidbody2D>() != null)
             {
-                if (hit.collider.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Dynamic)
-                {
-                    newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
-                    Debug.Log("ding1");
-                }
-                else
-                {
-                    newGrapple.connectedAnchor = hit.point;
-                    Debug.Log("ding2");
-                }
+                newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
+                Debug.Log("ding1");
+                newGrapple.connectedAnchor = new Vector2((hit.point.x - newGrapple.connectedBody.transform.position.x) / newGrapple.connectedBody.transform.localScale.x, (hit.point.y - newGrapple.connectedBody.transform.position.y) / newGrapple.connectedBody.transform.localScale.y);
+                Debug.Log("ding2");
                 GameObject.DestroyImmediate(grapple);
                 grapple = newGrapple;
-                Debug.Log("ding");
+                Debug.Log("ding3");
             }
         }
     }
@@ -277,14 +271,9 @@ public class PlayerController : MonoBehaviour {
             Vector3 position1;
             if (grapple != null)
             {
-                if (grapple.connectedBody != null)
-                {
-                    position1 = new Vector3(grapple.connectedBody.position.x, grapple.connectedBody.position.y, -5);
-                }
-                else
-                {
-                    position1 = new Vector3(grapple.connectedAnchor.x, grapple.connectedAnchor.y, -5);
-                }
+                float pos1X = grapple.connectedAnchor.x * grapple.connectedBody.transform.localScale.x + grapple.connectedBody.transform.position.x;
+                float pos1Y = grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y;
+                position1 = new Vector3(pos1X, pos1Y, -5);
                 lineRenderer.SetPosition(0, position0);
                 lineRenderer.SetPosition(1, position1);
             }

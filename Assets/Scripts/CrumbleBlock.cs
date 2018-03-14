@@ -23,12 +23,19 @@ public class CrumbleBlock : MonoBehaviour {
     {
         if (counter == 2)
         {
-            gameObject.SetActive(false);
             if(collision.collider.GetComponent<DistanceJoint2D>() != null)
             {
-                GameObject.Destroy(collision.collider.GetComponent<DistanceJoint2D>());
-                collision.collider.GetComponent<LineRenderer>().enabled = false;
+                float checkX = collision.collider.GetComponent<DistanceJoint2D>().connectedAnchor.x * collision.collider.GetComponent<DistanceJoint2D>().connectedBody.transform.localScale.x + collision.collider.GetComponent<DistanceJoint2D>().connectedBody.transform.position.x;
+                float checkY = collision.collider.GetComponent<DistanceJoint2D>().connectedAnchor.y * collision.collider.GetComponent<DistanceJoint2D>().connectedBody.transform.localScale.y + collision.collider.GetComponent<DistanceJoint2D>().connectedBody.transform.position.y;
+                Debug.Log("checks    " + checkX + "    " + checkY);
+                Debug.Log("extents    " + collision.otherCollider.GetComponent<BoxCollider2D>().bounds.extents.x + "    " + collision.otherCollider.GetComponent<BoxCollider2D>().bounds.extents.y);
+                if (collision.otherCollider.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(checkX,checkY,0)))
+                {
+                    GameObject.Destroy(collision.collider.GetComponent<DistanceJoint2D>());
+                    collision.collider.GetComponent<LineRenderer>().enabled = false;
+                }
             }
+            gameObject.SetActive(false);
         }
         if (counter < 2)
         {

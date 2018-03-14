@@ -232,7 +232,7 @@ Transform:
   - {fileID: 1780201962}
   - {fileID: 341382203}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &293341422
 Prefab:
@@ -687,14 +687,14 @@ Prefab:
       objectReference: {fileID: 447581303}
     - target: {fileID: 114773196229068554, guid: d735f08721c92b14d98158f858c0ae33,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 599088171}
-    - target: {fileID: 114773196229068554, guid: d735f08721c92b14d98158f858c0ae33,
-        type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 447581300}
+    - target: {fileID: 114773196229068554, guid: d735f08721c92b14d98158f858c0ae33,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 599088171}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d735f08721c92b14d98158f858c0ae33, type: 2}
   m_IsPrefabParent: 0
