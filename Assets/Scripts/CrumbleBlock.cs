@@ -31,6 +31,7 @@ public class CrumbleBlock : MonoBehaviour {
                 Debug.Log("extents    " + collision.otherCollider.GetComponent<BoxCollider2D>().bounds.extents.x + "    " + collision.otherCollider.GetComponent<BoxCollider2D>().bounds.extents.y);
                 if (collision.otherCollider.GetComponent<BoxCollider2D>().bounds.Contains(new Vector3(checkX,checkY,0)))
                 {
+                    Debug.Log("hookdestroyed");
                     GameObject.Destroy(collision.collider.GetComponent<DistanceJoint2D>());
                     collision.collider.GetComponent<LineRenderer>().enabled = false;
                 }
