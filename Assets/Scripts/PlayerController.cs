@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
     public bool isGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.down, 0.001f);
-        return (hit && hit.collider.name != "Player");
+        return (hit && hit.collider.name != "Player" && hit.collider.gameObject.layer != 9);
     }
 
     public void UpdateAnimator()
