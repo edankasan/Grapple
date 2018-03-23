@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     protected ContactFilter2D contactFilter;
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
+    protected Vector2 baseSpeed = new Vector2(0, 0);
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -54,14 +55,26 @@ public class PlayerController : MonoBehaviour {
     {
         animator.SetBool("grounded", grounded);
         animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
-        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x / moveSpeed));
-        bool flipSprite = (spriteRenderer.flipX ? (rb2d.velocity.x > 0.01f) : (rb2d.velocity.x < -0.01f));
+        bool flipSprite = (spriteRenderer.flipX ? (rb2d.velocity.x > 0.1f) : (rb2d.velocity.x < -0.1f));
         if (flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
     }
-
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+            animator.SetFloat("velocityX", Mathf.Abs(collision.relativeVelocity.x));
+        bool flipSprite = (spriteRenderer.flipX ? (collision.relativeVelocity.x > 0.1f) : (collision.relativeVelocity.x < -0.1f));
+        if (flipSprite)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+        if (collision.collider.GetComponent<Rigidbody2D>().velocity.x != 0 && (rb2d.velocity.x == 0 || rb2d.velocity.x == -collision.collider.GetComponent<Rigidbody2D>().velocity.x))
+        {
+            rb2d.velocity = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, rb2d.velocity.y);
+        }
+        baseSpeed = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, collision.collider.GetComponent<Rigidbody2D>().velocity.y);
+    }
 
     void Update()
     {
@@ -74,6 +87,10 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
         grounded = isGrounded();
+        if(!grounded)
+        {
+            baseSpeed = new Vector2(0, 0);
+        }
         UpdateAnimator();
 
         InputController.Instance.CheckForInput();
@@ -101,6 +118,7 @@ public class PlayerController : MonoBehaviour {
         keyboardPreset[2] = new Dictionary<KeyCode, KeyboardManager.OnButtonFunc>();
 
         #region setting keyboard presets
+
         keyboardPreset[1].Add(KeyCode.W, OnWHeld);
         keyboardPreset[1].Add(KeyCode.A, OnAHeld);
         keyboardPreset[1].Add(KeyCode.S, OnSHeld);
@@ -136,11 +154,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     #region keyboard control funcs
+    
     public bool OnDHeld()
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
-            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(baseSpeed.x + moveSpeed, rb2d.velocity.y);
         }
         else
         {
@@ -154,7 +173,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
-            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(baseSpeed.x - moveSpeed, rb2d.velocity.y);
         }
         else
         {
@@ -168,7 +187,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (grounded)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower + baseSpeed.y);
         }
         else
         {

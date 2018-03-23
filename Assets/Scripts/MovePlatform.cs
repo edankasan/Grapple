@@ -17,7 +17,7 @@ public class MovePlatform : MonoBehaviour {
     private void Awake()
     {
         BasePosition = GetComponent<Transform>().position;
-        movement = new Vector3((EndPosition.x - BasePosition.x) / speedModifier, (EndPosition.y - BasePosition.y) / speedModifier, 0);
+        movement = new Vector3((EndPosition.x - BasePosition.x) * speedModifier, (EndPosition.y - BasePosition.y) * speedModifier, 0);
         block = GetComponent<Rigidbody2D>();
         block.velocity = new Vector2(movement.x, movement.y);
     }
@@ -25,10 +25,17 @@ public class MovePlatform : MonoBehaviour {
     void Update () {
         EndSkip = (Mathf.Abs(EndPosition.x - BasePosition.x) < Mathf.Abs(block.position.x - BasePosition.x) || Mathf.Abs(EndPosition.y - BasePosition.y) < Mathf.Abs(block.position.y - BasePosition.y));
         BaseSkip = (Mathf.Abs(EndPosition.x - BasePosition.x) < Mathf.Abs(block.position.x - EndPosition.x) || Mathf.Abs(EndPosition.y - BasePosition.y) < Mathf.Abs(block.position.y - EndPosition.y));
-        if (EndSkip || BaseSkip)
+        if (EndSkip)
         {
             block.velocity = new Vector2(-block.velocity.x, -block.velocity.y);
-            Debug.Log("dafuq");
+            block.position = EndPosition;
+            Debug.Log("dafuqEND");
         }
-	}
+        if (BaseSkip)
+        {
+            block.velocity = new Vector2(-block.velocity.x, -block.velocity.y);
+            block.position = BasePosition;
+            Debug.Log("dafuqBASE");
+        }
+    }
 }
