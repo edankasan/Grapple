@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212350969990475504}
   - component: {fileID: 114964204639001608}
   - component: {fileID: 61148332911535334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pressure Plate
   m_TagString: Terrain
   m_Icon: {fileID: 0}

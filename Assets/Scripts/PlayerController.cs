@@ -69,11 +69,14 @@ public class PlayerController : MonoBehaviour {
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-        if (collision.collider.GetComponent<Rigidbody2D>().velocity.x != 0 && (rb2d.velocity.x == 0 || rb2d.velocity.x == -collision.collider.GetComponent<Rigidbody2D>().velocity.x))
+        if (collision.collider.GetComponent<Rigidbody2D>() != null)
         {
-            rb2d.velocity = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, rb2d.velocity.y);
+            if (collision.collider.GetComponent<Rigidbody2D>().velocity.x != 0 && (rb2d.velocity.x == 0 || rb2d.velocity.x == -collision.collider.GetComponent<Rigidbody2D>().velocity.x))
+            {
+                rb2d.velocity = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, rb2d.velocity.y);
+            }
+            baseSpeed = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, collision.collider.GetComponent<Rigidbody2D>().velocity.y);
         }
-        baseSpeed = new Vector2(collision.collider.GetComponent<Rigidbody2D>().velocity.x, collision.collider.GetComponent<Rigidbody2D>().velocity.y);
     }
 
     void Update()
@@ -202,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool OnSHeld()
     {
-        if(hasDistanceJoint2D(grappleShooter) && rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y) && grapple.distance <= 6.97)
+        if(hasDistanceJoint2D(grappleShooter)/* && rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y)*/ && grapple.distance <= 6.97)
         {
             grapple.distance = grapple.distance + 0.03f;
         }
@@ -259,7 +262,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 direction = mousePosition - position;
         GrapplePullDirection = direction;
         direction = Vector3.Scale(direction, new Vector3(1000, 1000, 1));
-        Vector3 offset = Vector3.ClampMagnitude(direction, 1.5f);
+        Vector3 offset = Vector3.ClampMagnitude(direction, 1f);
         RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7);
         if (hit.collider != null && hit.collider.gameObject.layer != 8)
         {
