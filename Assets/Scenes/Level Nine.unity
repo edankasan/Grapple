@@ -262,6 +262,16 @@ Prefab:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 1714606825}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 1790464264}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Tomato
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
@@ -1231,9 +1241,19 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 566ef4d06008feb40b5cdc16830f9e26,
         type: 3}
+    - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
+        type: 2}
+      propertyPath: Vegetable
+      value: Tomato
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1790464264 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860513883951214, guid: 5b724659922733744b7a68593d8b4aef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1790464263}
 --- !u!1 &1966953721
 GameObject:
   m_ObjectHideFlags: 0

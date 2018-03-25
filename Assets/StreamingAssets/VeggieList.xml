@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VeggieListClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VeggieList>
+    <VeggieClass>
+      <name>Broccoli</name>
+      <found>true</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Carrot</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Corn</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Cucumber</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Eggplant</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Leek</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Mushroom</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Pepper</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Tomato</name>
+      <found>false</found>
+    </VeggieClass>
+    <VeggieClass>
+      <name>Turnip</name>
+      <found>false</found>
+    </VeggieClass>
+  </VeggieList>
+</VeggieListClass>

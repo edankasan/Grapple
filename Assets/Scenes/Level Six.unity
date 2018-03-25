@@ -393,6 +393,16 @@ Prefab:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 593618396}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 1577929984}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Leek
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
@@ -1101,9 +1111,19 @@ Prefab:
       propertyPath: flowerText
       value: 
       objectReference: {fileID: 175637811}
+    - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
+        type: 2}
+      propertyPath: Vegetable
+      value: Leek
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1577929984 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860513883951214, guid: 5b724659922733744b7a68593d8b4aef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1577929983}
 --- !u!1001 &1583249671
 Prefab:
   m_ObjectHideFlags: 0

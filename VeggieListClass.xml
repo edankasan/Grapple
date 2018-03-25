@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VeggieListClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Broccoli>true</Broccoli>
+  <Carrot>false</Carrot>
+  <Corn>false</Corn>
+  <Cucumber>false</Cucumber>
+  <Eggplant>false</Eggplant>
+  <Leek>false</Leek>
+  <Mushroom>false</Mushroom>
+  <Pepper>false</Pepper>
+  <Tomato>false</Tomato>
+  <Turnip>false</Turnip>
+</VeggieListClass>

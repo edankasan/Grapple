@@ -259,9 +259,19 @@ Prefab:
       propertyPath: flowerText
       value: 
       objectReference: {fileID: 734671733}
+    - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
+        type: 2}
+      propertyPath: Vegetable
+      value: Cucumber
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &261871954 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860513883951214, guid: 5b724659922733744b7a68593d8b4aef,
+    type: 2}
+  m_PrefabInternal: {fileID: 261871953}
 --- !u!4 &308799751 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4496878895269862, guid: d2f24dc09f9f54e4eaa74774ed71568b,
@@ -733,6 +743,16 @@ Prefab:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 2072865260}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 261871954}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Cucumber
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0

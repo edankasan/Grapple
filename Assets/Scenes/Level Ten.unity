@@ -451,6 +451,16 @@ Prefab:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 631626957}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 1555050206}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Turnip
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
@@ -1010,9 +1020,19 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 3e6ddfb52b93b87459f4d60f2c3faca2,
         type: 3}
+    - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
+        type: 2}
+      propertyPath: Vegetable
+      value: Turnip
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1555050206 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860513883951214, guid: 5b724659922733744b7a68593d8b4aef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1555050205}
 --- !u!1001 &1887637022
 Prefab:
   m_ObjectHideFlags: 0

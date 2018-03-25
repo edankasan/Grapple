@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Xml.Serialization;
+using System.IO;
 
 public class buttonBehaviour : MonoBehaviour {
 
@@ -22,6 +24,18 @@ public class buttonBehaviour : MonoBehaviour {
             loadingImage.SetActive(true);
             SceneManager.LoadScene(level);
         }
+    }
+    public void newGame()
+    {
+        VeggieListClass VeggieList = new VeggieListClass();
+
+        XmlSerializer serializer = new XmlSerializer(typeof(VeggieListClass));
+        var path = Application.streamingAssetsPath + "/VeggieList.xml";
+        StreamWriter writer = new StreamWriter(path);
+        serializer.Serialize(writer.BaseStream, VeggieList);
+        writer.Close();
+        loadingImage.SetActive(true);
+        SceneManager.LoadScene("Level Select");
     }
     public void ToggleCamera(GameObject PlayerFollower)
     {

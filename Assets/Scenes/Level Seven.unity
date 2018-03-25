@@ -261,6 +261,16 @@ Prefab:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 1011429049}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 1924987761}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Mushroom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
@@ -833,9 +843,19 @@ Prefab:
       propertyPath: flowerText
       value: 
       objectReference: {fileID: 1589934467}
+    - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
+        type: 2}
+      propertyPath: Vegetable
+      value: Mushroom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1924987761 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1860513883951214, guid: 5b724659922733744b7a68593d8b4aef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1924987760}
 --- !u!1 &1927050494
 GameObject:
   m_ObjectHideFlags: 0
