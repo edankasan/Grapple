@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.down, 0.001f);
         if(hit && hit.collider.name != "Player" && hit.collider.GetComponent<Rigidbody2D>()!= null)
         {
-            baseSpeed = new Vector2(hit.collider.GetComponent<Rigidbody2D>().velocity.x, hit.collider.GetComponent<Rigidbody2D>().velocity.x);
+            baseSpeed = new Vector2(hit.collider.GetComponent<Rigidbody2D>().velocity.x, hit.collider.GetComponent<Rigidbody2D>().velocity.y);
         }
         else
         {
