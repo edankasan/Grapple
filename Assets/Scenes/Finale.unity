@@ -1070,7 +1070,7 @@ Prefab:
     - target: {fileID: 224001058599091964, guid: d735f08721c92b14d98158f858c0ae33,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -100
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 224001058599091964, guid: d735f08721c92b14d98158f858c0ae33,
         type: 2}
@@ -1104,7 +1104,12 @@ Prefab:
     - target: {fileID: 224001058599091964, guid: d735f08721c92b14d98158f858c0ae33,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 36.71
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 224001058599091964, guid: d735f08721c92b14d98158f858c0ae33,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d735f08721c92b14d98158f858c0ae33, type: 2}
@@ -1472,7 +1477,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 14
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
