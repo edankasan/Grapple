@@ -3,15 +3,15 @@
   <VeggieList>
     <VeggieClass>
       <name>Broccoli</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Carrot</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Corn</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Cucumber</name>
@@ -19,27 +19,27 @@
     </VeggieClass>
     <VeggieClass>
       <name>Eggplant</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Leek</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Mushroom</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Pepper</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Tomato</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Turnip</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
   </VeggieList>
 </VeggieListClass>

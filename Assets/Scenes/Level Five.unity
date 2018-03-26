@@ -298,6 +298,41 @@ Prefab:
       propertyPath: VegetableName
       value: Eggplant
       objectReference: {fileID: 0}
+    - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e532efb4c37cb2246ab6b538c13af55d,
+        type: 3}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: Eggplant
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Eggplant Description
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Calorie Count: 25 calories per 100 grams
+
+        Health Benefits:
+
+        Eggplant is a very good source of dietary fiber, vitamin B1 and copper. It
+        is a good source of manganese, vitamin B6, niacin, potassium, folate and vitamin
+        K. Eggplant also contains phytonutrients such as nasunin and chlorogenic acid.
+
+        Commonly grown in: China, Idia, Egypt, Turkey'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0

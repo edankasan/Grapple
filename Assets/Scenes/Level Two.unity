@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -201,7 +201,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -247,7 +247,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -293,7 +293,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -339,7 +339,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -393,7 +393,7 @@ Prefab:
     - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
@@ -447,18 +447,44 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
-      propertyPath: loadingImage
-      value: 
-      objectReference: {fileID: 528667114}
-    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
       propertyPath: VegetablePatch
       value: 
       objectReference: {fileID: 1418954735}
-    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
-      propertyPath: VegetableName
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c099568c63083b24aab978cc868ac4f4,
+        type: 3}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
       value: Carrot
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Carrot Description
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Calorie Count: 41 calories per 100 grams
+
+        Health Benefits:
+
+        Carrots are a rich source of this powerful antioxidant, which, among other
+        vital uses, can be converted into vitamin A in the body to help maintain healthy
+        skin. They increase saliva and supply essential minerals, vitamins and enzymes
+        that aid in digestion.
+
+        Commonly grown in: China, Uzbekistan, Russia, United States'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
@@ -588,7 +614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -697,7 +723,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -743,7 +769,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -794,7 +820,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -1036,7 +1062,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4516884043779268, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1799852461039930, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
       propertyPath: m_Name
@@ -1084,6 +1110,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114286448456218540, guid: ee3b18ac9027c61418034abf415538d6,
+        type: 2}
+      propertyPath: loadingImage
+      value: 
+      objectReference: {fileID: 528667114}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee3b18ac9027c61418034abf415538d6, type: 2}
   m_IsPrefabParent: 0

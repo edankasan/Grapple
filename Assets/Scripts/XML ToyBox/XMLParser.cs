@@ -9,7 +9,7 @@ public class XMLParser : MonoBehaviour {
 	void Start () {
         var path = Application.streamingAssetsPath + "/VeggieList.xml";
         XmlDocument VeggieList = new XmlDocument();
-        StreamReader reader = new StreamReader(path);
+        StreamReader reader = new StreamReader(path, new UTF8Encoding(false));
         VeggieList.Load(reader);
         reader.Close();
         XmlNodeList Veggies = VeggieList.GetElementsByTagName("VeggieClass");

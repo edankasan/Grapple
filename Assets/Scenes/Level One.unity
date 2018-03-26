@@ -113,99 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &36486610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 36486613}
-  - component: {fileID: 36486612}
-  - component: {fileID: 36486611}
-  m_Layer: 0
-  m_Name: Door
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &36486611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36486610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f069a62c40a5a0f4bace3dd88a290cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingImage: {fileID: 316291011}
-  VegetableName: Broccoli
-  VegetablePatch: {fileID: 1152853489}
---- !u!212 &36486612
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36486610}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1311f0c5df55e5c438d92b45ed5d5310, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.35, y: 1.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
---- !u!224 &36486613
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36486610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: 3.42}
-  m_SizeDelta: {x: 1.35, y: 1.5}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &204301529
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +227,7 @@ Transform:
   - {fileID: 1907218112}
   - {fileID: 1135884093}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &426551625
 Prefab:
@@ -444,7 +351,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!45 &447581305
 Skybox:
@@ -552,6 +459,136 @@ GameObject:
   m_PrefabParentObject: {fileID: 1665490005036388, guid: ee3b18ac9027c61418034abf415538d6,
     type: 2}
   m_PrefabInternal: {fileID: 599088170}
+--- !u!1001 &667354123
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224143016694893588, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetablePatch
+      value: 
+      objectReference: {fileID: 1152853489}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: Broccoli
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Broccoli Description
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: "Calorie Count: 34 Calories per 100 Grams\nHealth Benefits:\nBroccoli
+        is an excellent source of vitamin K, vitamin C, chromium and folate. It is
+        a very good source of dietary fiber, pantothenic acid, vitamin B6, vitamin
+        E, manganese, phosphorus, choline, vitamin B1, vitamin A (in the form of carotenoids),
+        potassium and copper.\nCommonly grown in: \nChina, India, Spain, Mexico"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1135884093 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4363710885925454, guid: 1776c28983374f241be30056402f82e5,
@@ -570,7 +607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4585422197702356, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4585422197702356, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
       propertyPath: m_LocalPosition.z
@@ -594,7 +631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4585422197702356, guid: 5b724659922733744b7a68593d8b4aef, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114810776438116362, guid: 5b724659922733744b7a68593d8b4aef,
         type: 2}

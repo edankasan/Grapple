@@ -272,6 +272,26 @@ Prefab:
       propertyPath: VegetableName
       value: Tomato
       objectReference: {fileID: 0}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Calorie Count: 18 calories per 100 grams
+
+        Health Benefits:
+
+        Tomatoes are the major dietary source of the antioxidant lycopene, which has
+        been linked to many health benefits, including reduced risk of heart disease
+        and cancer. They are also a great source of vitamin C, potassium, folate and
+        vitamin K.
+
+        Commonly grown in: China, India, United States, Turkey'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 566ef4d06008feb40b5cdc16830f9e26,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0

@@ -753,6 +753,42 @@ Prefab:
       propertyPath: VegetableName
       value: Cucumber
       objectReference: {fileID: 0}
+    - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c389b0763e61e340aa6eb34a691c990,
+        type: 3}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Calorie Count: 16 calories per 100 grams
+
+        Health Benefits:
+
+        Cucumbers contain multiple B vitamins, including vitamin B1, vitamin B5, and
+        vitamin B7 (biotin). B vitamins are known to help ease feelings of anxiety
+        and buffer some of the damaging effects of stress. Cucumbers are rich in two
+        of the most basic elements needed for healthy digestion: water and fiber.
+
+        Commonly grown in: China, Turkey, Iran, Russian Federation'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Cucumber Description
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: Cucumber
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0

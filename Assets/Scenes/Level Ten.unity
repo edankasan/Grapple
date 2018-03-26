@@ -461,6 +461,38 @@ Prefab:
       propertyPath: VegetableName
       value: Turnip
       objectReference: {fileID: 0}
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e6ddfb52b93b87459f4d60f2c3faca2,
+        type: 3}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: Turnip
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Turnip Description
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Calorie Count: 28 calories per 100 grams
+
+        Health Benefits:
+
+        Turnips have a rich nutritional value comprising of vitamins K, A, C, E, B1,
+        B3, B5, B6, B2 and folate as well as minerals like manganese, fiber, potassium,
+        magnesium, iron, calcium and copper. It is also a good source of phosphorus,
+        omega-3 fatty acids and protein.
+
+        Commonly grown in: China, Uzbekistan, Russia, United States'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
