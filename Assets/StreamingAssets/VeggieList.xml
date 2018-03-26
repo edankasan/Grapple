@@ -7,11 +7,11 @@
     </VeggieClass>
     <VeggieClass>
       <name>Carrot</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Corn</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Cucumber</name>
@@ -19,27 +19,27 @@
     </VeggieClass>
     <VeggieClass>
       <name>Eggplant</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Leek</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Mushroom</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Pepper</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Tomato</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
     <VeggieClass>
       <name>Turnip</name>
-      <found>true</found>
+      <found>false</found>
     </VeggieClass>
   </VeggieList>
 </VeggieListClass>

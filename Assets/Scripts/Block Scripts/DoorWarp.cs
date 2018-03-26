@@ -12,7 +12,8 @@ public class DoorWarp : MonoBehaviour {
     private RectTransform door;
     private Vector3[] boundary;
     private Transform PlayerTransform;
-    GameObject Player;
+    private GameObject MainCamera;
+    private GameObject Player;
     public string VegetableName;
     public GameObject VegetablePatch;
     public GameObject VeggieCanvas;
@@ -22,6 +23,7 @@ public class DoorWarp : MonoBehaviour {
         boundary = new Vector3[4];
         door.GetWorldCorners(boundary);
         Player = GameObject.Find("Player");
+        MainCamera = GameObject.Find("Main Camera");
         PlayerTransform = Player.GetComponent<Transform>();
         Debug.Log("ding");
     }
@@ -33,45 +35,57 @@ public class DoorWarp : MonoBehaviour {
             {
                 if(!VegetablePatch.activeInHierarchy && Player.activeInHierarchy)
                 {
+                    if(!MainCamera.activeInHierarchy)
+                    {
+                        MainCamera.SetActive(true);
+                    }
                     Player.SetActive(false);
                     UpdateVeggieList(VegetableName);
                     VeggieCanvas.SetActive(true);
+
                 }
             }
         }
     }
     private void UpdateVeggieList(string Vegetable)
     {
-        var path = Application.streamingAssetsPath + "/VeggieList.xml";
-        XmlDocument VeggieList = new XmlDocument();
-        StreamReader reader = new StreamReader(path, new UTF8Encoding(false));
-        VeggieList.Load(reader);
-        reader.Close();
-        XmlNodeList Veggies = VeggieList.GetElementsByTagName("VeggieClass");
-        foreach (XmlNode VeggieClass in Veggies)
+        if (Vegetable == "Finale")
         {
-            XmlNodeList VeggieDetails = VeggieClass.ChildNodes;
-            Debug.Log("POGGERS");
-            foreach (XmlNode Detail in VeggieDetails)
+            SceneManager.LoadScene("Title Screen");
+        }
+        else
+        {
+            var path = Application.streamingAssetsPath + "/VeggieList.xml";
+            XmlDocument VeggieList = new XmlDocument();
+            StreamReader reader = new StreamReader(path, new UTF8Encoding(false));
+            VeggieList.Load(reader);
+            reader.Close();
+            XmlNodeList Veggies = VeggieList.GetElementsByTagName("VeggieClass");
+            foreach (XmlNode VeggieClass in Veggies)
             {
-                if (Detail.InnerText == Vegetable)
+                XmlNodeList VeggieDetails = VeggieClass.ChildNodes;
+                Debug.Log("POGGERS");
+                foreach (XmlNode Detail in VeggieDetails)
                 {
-                    Debug.Log("POGGERS1");
-                    foreach (XmlNode thing in VeggieDetails)
+                    if (Detail.InnerText == Vegetable)
                     {
-                        Debug.Log("POGGERS2");
-                        if (thing.Name == "found")
+                        Debug.Log("POGGERS1");
+                        foreach (XmlNode thing in VeggieDetails)
                         {
-                            Debug.Log("POGGERS3");
-                            thing.InnerText = "true";
+                            Debug.Log("POGGERS2");
+                            if (thing.Name == "found")
+                            {
+                                Debug.Log("POGGERS3");
+                                thing.InnerText = "true";
+                            }
                         }
                     }
                 }
             }
+            XmlSerializer serializer = new XmlSerializer(typeof(VeggieListClass));
+            StreamWriter writer = new StreamWriter(path);
+            serializer.Serialize(writer.BaseStream, VeggieList);
+            writer.Close();
         }
-        XmlSerializer serializer = new XmlSerializer(typeof(VeggieListClass));
-        StreamWriter writer = new StreamWriter(path);
-        serializer.Serialize(writer.BaseStream, VeggieList);
-        writer.Close();
     }
 }

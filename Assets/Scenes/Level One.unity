@@ -586,6 +586,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: VegetableName
+      value: Broccoli
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
