@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1028307505385800
 GameObject:
   m_ObjectHideFlags: 1
@@ -226,10 +226,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -237,13 +237,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Calorie Count:
-
-    Health Benefits:
-
-    Commonly grown in:
-
-    Other facts and descriptions:'
+  m_Text: "Calorie Count: 34 Calories per 100 Grams\nHealth Benefits:\nBroccoli is
+    an excellent source of vitamin K, vitamin C, chromium and folate. It is a very
+    good source of dietary fiber, pantothenic acid, vitamin B6, vitamin E, manganese,
+    phosphorus, choline, vitamin B1, vitamin A (in the form of carotenoids), potassium
+    and copper.\nCommonly grown in: \nChina, India, Spain, Mexico"
 --- !u!114 &114050074808719622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f069a62c40a5a0f4bace3dd88a290cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VegetableName: Carrot
+  VegetableName: Broccoli
   VegetablePatch: {fileID: 0}
   VeggieCanvas: {fileID: 1006530049526572}
 --- !u!114 &114336752745301690
@@ -369,7 +367,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Vegetable Description
+  m_Text: 'Broccoli Description
 
 '
 --- !u!114 &114576570756264064
@@ -480,7 +478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vegetable Name
+  m_Text: Broccoli
 --- !u!114 &114705625254260796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,7 +712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 7.5, y: 3.4}
   m_SizeDelta: {x: 1.35, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224192544280289360
@@ -732,8 +730,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -41, y: -102.5}
-  m_SizeDelta: {x: 400, y: 145}
+  m_AnchoredPosition: {x: 0, y: -102.5}
+  m_SizeDelta: {x: 750, y: 340}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224192801589786324
 RectTransform:
@@ -808,7 +806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267, y: -20}
+  m_AnchoredPosition: {x: 275, y: -175}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224770225186546854

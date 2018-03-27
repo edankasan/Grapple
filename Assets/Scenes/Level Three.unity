@@ -939,10 +939,7 @@ Prefab:
       value: "Calorie Count: 365 calories per 100 grams\nHealth Benefits:\nRich in
         vitamin C, magnesium, and contains certain B vitamins and potassium. It also
         supplies a good dose of two antioxidants linked to eye and skin health called
-        zeaxanthin and lutein.\nCommonly grown in: United States, China, Brazil, Ethiopia\t\nOther
-        facts and descriptions: Corn is very healthy when eaten as is, however you
-        should keep in mind that high fructose corn syrup us very unhealthy and should
-        be avoided."
+        zeaxanthin and lutein.\nCommonly grown in: United States, China, Brazil, Ethiopia\t\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}

@@ -424,16 +424,16 @@ Prefab:
     - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
       propertyPath: m_Text
-      value: 'Calorie Count: 61 calories per 100 grams
-
-        Health Benefits:
-
-        Leeks are an excellent source of vitamin K. They are very good source of manganese,
+      value: "Calorie Count: 61 calories per 100 grams\nHealth Benefits:\nLeeks are
+        an excellent source of vitamin K. They are very good source of manganese,
         vitamin B6, copper, iron, folate and vitamin C. Leeks are also a good source
         of vitamin A (in the form of carotenoids, dietary fiber, magnesium, vitamin
-        E, calcium and omega-3 fatty acids.
-
-        Commonly grown in: Indonesia, Turkey, Belgium, France'
+        E, calcium and omega-3 fatty acids.\nCommonly grown in: Indonesia, \nTurkey,
+        Belgium, France"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}

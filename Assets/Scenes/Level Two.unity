@@ -480,7 +480,9 @@ Prefab:
         skin. They increase saliva and supply essential minerals, vitamins and enzymes
         that aid in digestion.
 
-        Commonly grown in: China, Uzbekistan, Russia, United States'
+        Commonly grown in: China,
+
+        Uzbekistan, Russia, United States'
       objectReference: {fileID: 0}
     - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
       propertyPath: m_IsActive

@@ -323,15 +323,11 @@ Prefab:
     - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
       propertyPath: m_Text
-      value: 'Calorie Count: 25 calories per 100 grams
-
-        Health Benefits:
-
-        Eggplant is a very good source of dietary fiber, vitamin B1 and copper. It
-        is a good source of manganese, vitamin B6, niacin, potassium, folate and vitamin
-        K. Eggplant also contains phytonutrients such as nasunin and chlorogenic acid.
-
-        Commonly grown in: China, Idia, Egypt, Turkey'
+      value: "Calorie Count: 25 calories per 100 grams\nHealth Benefits:\nEggplant
+        is a very good source of dietary fiber, vitamin B1 and copper. It is a good
+        source of manganese, vitamin B6, niacin, potassium, folate and vitamin K.
+        Eggplant also contains phytonutrients such as nasunin and chlorogenic acid.\nCommonly
+        grown in: China, \nIndia, Egypt, Turkey"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}

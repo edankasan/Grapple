@@ -771,16 +771,12 @@ Prefab:
     - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
       propertyPath: m_Text
-      value: 'Calorie Count: 16 calories per 100 grams
-
-        Health Benefits:
-
-        Cucumbers contain multiple B vitamins, including vitamin B1, vitamin B5, and
-        vitamin B7 (biotin). B vitamins are known to help ease feelings of anxiety
-        and buffer some of the damaging effects of stress. Cucumbers are rich in two
-        of the most basic elements needed for healthy digestion: water and fiber.
-
-        Commonly grown in: China, Turkey, Iran, Russian Federation'
+      value: "Calorie Count: 16 calories per 100 grams\nHealth Benefits:\nCucumbers
+        contain multiple B vitamins, including vitamin B1, vitamin B5, and vitamin
+        B7 (biotin). B vitamins are known to help ease feelings of anxiety and buffer
+        some of the damaging effects of stress. Cucumbers are rich in two of the most
+        basic elements needed for healthy digestion: water and fiber.\nCommonly grown
+        in: China, \nTurkey, Iran, Russian Federation"
       objectReference: {fileID: 0}
     - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
@@ -793,6 +789,16 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: Cucumber
+      objectReference: {fileID: 0}
+    - target: {fileID: 224192544280289360, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224192544280289360, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 770
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}

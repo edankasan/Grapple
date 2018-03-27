@@ -561,35 +561,9 @@ Prefab:
       propertyPath: VegetablePatch
       value: 
       objectReference: {fileID: 1152853489}
-    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Text
-      value: Broccoli
-      objectReference: {fileID: 0}
-    - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Broccoli Description
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114041806146784716, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Text
-      value: "Calorie Count: 34 Calories per 100 Grams\nHealth Benefits:\nBroccoli
-        is an excellent source of vitamin K, vitamin C, chromium and folate. It is
-        a very good source of dietary fiber, pantothenic acid, vitamin B6, vitamin
-        E, manganese, phosphorus, choline, vitamin B1, vitamin A (in the form of carotenoids),
-        potassium and copper.\nCommonly grown in: \nChina, India, Spain, Mexico"
-      objectReference: {fileID: 0}
     - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: VegetableName
-      value: Broccoli
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
