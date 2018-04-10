@@ -22,14 +22,16 @@ public class InputController {
     public MouseManager MouseManager { get; protected set; }
     public KeyboardManager KeyboardManager { get; protected set; }
 
-    // Use this for initialization
-    protected InputController() {
+
+    protected InputController()
+    {
         MouseManager = new MouseManager();
         KeyboardManager = new KeyboardManager();
 	}
 	
-	// Update is called once per frame
-	public void CheckForInput() {
+
+	public void CheckForInput()
+    {
         MouseManager.CheckMouseContext();
         MouseManager.CheckForInput();
         KeyboardManager.CheckForInput();

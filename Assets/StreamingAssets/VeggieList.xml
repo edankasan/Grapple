@@ -19,15 +19,15 @@
     </VeggieClass>
     <VeggieClass>
       <name>Eggplant</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Leek</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Mushroom</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Pepper</name>

@@ -7,23 +7,31 @@ public class PlayerController : MonoBehaviour {
 
     public static PlayerController Instance { get; protected set; }
 
+    //things related to basic player movement
+
+    protected Rigidbody2D rb2d;
     public float jumpPower;
     public float moveSpeed;
+
+    //end of things related to basic player movement
+
+    //things related to the current player state
+
     protected bool grounded;
-    protected Vector2 groundNormal;
-    protected ContactFilter2D contactFilter;
-    protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
-    protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
-    protected Vector2 baseSpeed = new Vector2(0, 0);
+    protected Vector2 baseSpeed = new Vector2(0, 0); // the base speed is important for keeping the player in sync with any moving platform they may stand on
+
+    //end of things related to the current player state
+
+    //things related to the animations
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    protected Rigidbody2D rb2d;
+    //end of things related to the animations
 
     public GameObject loadingImage;
 
-    //grappling hook stuff
+    //things related to the grappling hook
 
     public GameObject grappleShooter;
 
@@ -33,22 +41,26 @@ public class PlayerController : MonoBehaviour {
 
     public Vector3 GrapplePullDirection;
 
-    void Awake () {
+    //end of things related to the grappling hook
+
+    void Awake () //runs during the first frame the player is active.
+    {
         Instance = this;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         initiateKeyControls();
     }
-    public bool hasDistanceJoint2D(GameObject obj)
+    public bool hasDistanceJoint2D(GameObject obj) //returns true if the object has a DistanceJoint2D, else false.
     {
         return obj.GetComponent<DistanceJoint2D>() != null;
     }
 
-    public bool isGrounded()
+    public bool isGrounded() // if the player is on a platform returns true, else false.
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.down, 0.001f);
-        if(hit && hit.collider.name != "Player" && hit.collider.GetComponent<Rigidbody2D>()!= null)
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.down, 0.001f); 
+        //checks if there is anything within 0.001 units below the player
+        if(hit && hit.collider.name != "Player" && hit.collider.GetComponent<Rigidbody2D>()!= null)//updates the player's base speed to match where the player is.
         {
             baseSpeed = new Vector2(hit.collider.GetComponent<Rigidbody2D>().velocity.x, hit.collider.GetComponent<Rigidbody2D>().velocity.y);
         }
@@ -59,7 +71,7 @@ public class PlayerController : MonoBehaviour {
         return (hit && hit.collider.name != "Player" && hit.collider.gameObject.layer != 9);
     }
 
-    public void UpdateAnimator()
+    public void UpdateAnimator() //updates the animator.
     {
         animator.SetBool("grounded", grounded);
         animator.SetBool("GrappleOn", hasDistanceJoint2D(grappleShooter));
@@ -69,7 +81,7 @@ public class PlayerController : MonoBehaviour {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision) //when colliding with a platform makes sure to keep the basespeed of the player updated.
     {
             animator.SetFloat("velocityX", Mathf.Abs(collision.relativeVelocity.x));
         bool flipSprite = (spriteRenderer.flipX ? (collision.relativeVelocity.x > 0.1f) : (collision.relativeVelocity.x < -0.1f));
@@ -87,7 +99,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Update()
+    void Update() // runs every frame.
     {
         if(Mathf.Abs(rb2d.velocity.y) < 0.0005)
         {
@@ -116,10 +128,8 @@ public class PlayerController : MonoBehaviour {
     // after jumping you might want to return TRUE so as to NOT accept any
     // more inputs.
     delegate bool OnButtonFunc();
-    Dictionary<KeyCode, OnButtonFunc> heldButtonFuncs;
-    Dictionary<KeyCode, OnButtonFunc> releasedButtonFuncs;
 
-    void initiateKeyControls()
+    void initiateKeyControls() //sets up the controls.
     {
         //Here we will pass the inputcontroller our keyset and mouseset.
         Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset = new Dictionary<KeyState, MouseManager.MouseFunc[]>();
@@ -141,17 +151,18 @@ public class PlayerController : MonoBehaviour {
         keyboardPreset[2].Add(KeyCode.D, OnDReleased);
         #endregion
 
-        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset);
+        InputController.Instance.KeyboardManager.InitiateKeyControls(keyboardPreset); //sends the keyboard control scheme to the KeyboardManager.
 
+        //here we call the function that will set up the mouse controls
         #region setting mouse presets
         SetMouseControls(mousePreset);
         #endregion
 
-        InputController.Instance.MouseManager.InitiateKeyControls(mousePreset);
+        InputController.Instance.MouseManager.InitiateKeyControls(mousePreset); // sends the mouse control scheme to the MouseManager.
 
     }
 
-    public void SetMouseControls(Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset)
+    public void SetMouseControls(Dictionary<KeyState, MouseManager.MouseFunc[]> mousePreset) // sets up the mouse controls.
     {
         MouseManager.MouseFunc[] PressedMouseButtons = new MouseManager.MouseFunc[3];
         PressedMouseButtons[0] = OnLeftClickPressed;
@@ -164,9 +175,10 @@ public class PlayerController : MonoBehaviour {
         mousePreset[KeyState.Released] = ReleasedMouseButtons;
     }
 
-    #region keyboard control funcs
+    //here i have all the functions that will go to the KeyboardManager
+    #region keyboard control funcs 
     
-    public bool OnDHeld()
+    public bool OnDHeld() //runs when the "D" button is held.
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
@@ -180,7 +192,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    public bool OnAHeld()
+    public bool OnAHeld() //runs when the "A" button is held.
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
@@ -194,7 +206,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    public bool OnWHeld()
+    public bool OnWHeld() //runs when the "W" button is held.
     {
         if (grounded)
         {
@@ -211,17 +223,16 @@ public class PlayerController : MonoBehaviour {
             return false;
     }
 
-    public bool OnSHeld()
+    public bool OnSHeld() //runs when the "S" button is held.
     {
-        if(hasDistanceJoint2D(grappleShooter)/* && rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y)*/ && grapple.distance <= 6.97)
+        if(hasDistanceJoint2D(grappleShooter) && grapple.distance <= 6.97)
         {
             grapple.distance = grapple.distance + 0.03f;
         }
-        Debug.Log(rb2d.position.y < (grapple.connectedAnchor.y * grapple.connectedBody.transform.localScale.y + grapple.connectedBody.transform.position.y));
         return false;
     }
 
-    public bool OnRHeld()
+    public bool OnRHeld() //runs when the "R" button is held.
     {
         loadingImage.SetActive(true);
         Scene scene = SceneManager.GetActiveScene();
@@ -230,7 +241,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    public bool OnAReleased()
+    public bool OnDReleased() //runs when the "D" button is released.
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
@@ -240,7 +251,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    public bool OnDReleased()
+    public bool OnAReleased() //runs when the "A" button is released.
     {
         if (!hasDistanceJoint2D(grappleShooter) || grounded)
         {
@@ -250,7 +261,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    public bool OnWReleased()
+    public bool OnWReleased() //runs when the "W" button is released.
     {
         if (!hasDistanceJoint2D(grappleShooter) && rb2d.velocity.y > 0)
         {
@@ -263,7 +274,8 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
     #region mouse control funcs
-    public void OnLeftClickPressed()
+    public void OnLeftClickPressed() //runs when the left mouse button is pressed. 
+    //attempts to shoot the grappling hook in the direction of the mouse relative to the player.
     { 
         Vector3 mousePosition = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
         Vector3 position = grappleShooter.transform.position;
@@ -271,8 +283,8 @@ public class PlayerController : MonoBehaviour {
         GrapplePullDirection = direction;
         direction = Vector3.Scale(direction, new Vector3(1000, 1000, 1));
         Vector3 offset = Vector3.ClampMagnitude(direction, 1f);
-        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7);
-        if (hit.collider != null && hit.collider.gameObject.layer != 8)
+        RaycastHit2D hit = Physics2D.Raycast(position + offset, direction, 7); //checks what's the closest platform in the direction of the click within range.
+        if (hit.collider != null && hit.collider.gameObject.layer != 8) //if the closest platform is an eligible grapple target then creates the grappling hook.
         {
             DistanceJoint2D newGrapple = grappleShooter.AddComponent<DistanceJoint2D>();
             newGrapple.enableCollision = false;
@@ -282,16 +294,14 @@ public class PlayerController : MonoBehaviour {
             if (hit.collider.GetComponent<Rigidbody2D>() != null)
             {
                 newGrapple.connectedBody = hit.collider.GetComponent<Rigidbody2D>();
-                Debug.Log("ding1");
-                newGrapple.connectedAnchor = new Vector2((hit.point.x - newGrapple.connectedBody.transform.position.x) / newGrapple.connectedBody.transform.localScale.x, (hit.point.y - newGrapple.connectedBody.transform.position.y) / newGrapple.connectedBody.transform.localScale.y);
-                Debug.Log("ding2");
+                newGrapple.connectedAnchor = new Vector2((hit.point.x - newGrapple.connectedBody.transform.position.x) / newGrapple.connectedBody.transform.localScale.x, 
+                (hit.point.y - newGrapple.connectedBody.transform.position.y) / newGrapple.connectedBody.transform.localScale.y);
                 GameObject.DestroyImmediate(grapple);
                 grapple = newGrapple;
-                Debug.Log("ding3");
             }
         }
     }
-    public void OnLeftClickHeld()
+    public void OnLeftClickHeld() //runs when the left mouse button is held. updates the grappling hook graphics.
     {
         if (hasDistanceJoint2D(grappleShooter))
         {
@@ -309,7 +319,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-    public void OnLeftClickReleased()
+    public void OnLeftClickReleased() //runs when the left mouse button is released. destroys the grappling hook and the disables it's graphics.
     {
         GameObject.Destroy(grapple);
         lineRenderer.enabled = false;

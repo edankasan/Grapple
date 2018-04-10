@@ -40,29 +40,10 @@ public class KeyboardManager {
             RegisteredKeys.Add(key);
     }
 
-    public void CheckForInput()
-    {
-        foreach (KeyCode key in RegisteredKeys)
-        {
-            if (Input.GetKeyDown(key) == true && pressedButtonFuncs.ContainsKey(key) == true)
-                if (pressedButtonFuncs[key].Invoke() == true)
-                    break;
-
-            if (Input.GetKey(key) == true && heldButtonFuncs.ContainsKey(key) == true)
-                if (heldButtonFuncs[key].Invoke() == true)
-                    break;
-
-            if (Input.GetKeyUp(key) == true && releasedButtonFuncs.ContainsKey(key) == true)
-                if (releasedButtonFuncs[key].Invoke() == true)
-                    break;
-        }
-    }
-
     public void InitiateKeyControls(Dictionary<KeyCode, OnButtonFunc>[] preset)
     {
         if (preset.Length != 3)
         {
-            Debug.LogError("WRITE ME!");
             return;
         }
 
@@ -79,6 +60,24 @@ public class KeyboardManager {
         foreach (KeyCode key in preset[2].Keys)
         {
             SetOnReleasedKey(key, preset[2][key]);
+        }
+    }
+
+    public void CheckForInput()
+    {
+        foreach (KeyCode key in RegisteredKeys)
+        {
+            if (Input.GetKeyDown(key) == true && pressedButtonFuncs.ContainsKey(key) == true)
+                if (pressedButtonFuncs[key].Invoke() == true)
+                    break;
+
+            if (Input.GetKey(key) == true && heldButtonFuncs.ContainsKey(key) == true)
+                if (heldButtonFuncs[key].Invoke() == true)
+                    break;
+
+            if (Input.GetKeyUp(key) == true && releasedButtonFuncs.ContainsKey(key) == true)
+                if (releasedButtonFuncs[key].Invoke() == true)
+                    break;
         }
     }
 

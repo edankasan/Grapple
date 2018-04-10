@@ -565,6 +565,31 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 447581303}
+    - target: {fileID: 224003341919388168, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1545469103
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: LevelCanvas
+      value: 
+      objectReference: {fileID: 1731050415}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
   m_IsPrefabParent: 0
@@ -672,6 +697,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0528be8d591f1cd45a3c4bfdfd206357, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1731050415 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1810885667303496, guid: d735f08721c92b14d98158f858c0ae33,
+    type: 2}
+  m_PrefabInternal: {fileID: 1756731320}
 --- !u!1001 &1756731320
 Prefab:
   m_ObjectHideFlags: 0
