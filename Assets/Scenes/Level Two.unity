@@ -445,22 +445,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: VegetablePatch
-      value: 
-      objectReference: {fileID: 1418954735}
-    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c099568c63083b24aab978cc868ac4f4,
-        type: 3}
-    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Text
-      value: Carrot
-      objectReference: {fileID: 0}
     - target: {fileID: 114477827059986400, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
       propertyPath: m_Text
@@ -484,29 +468,30 @@ Prefab:
 
         Uzbekistan, Russia, United States'
       objectReference: {fileID: 0}
+    - target: {fileID: 114336752745301690, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c099568c63083b24aab978cc868ac4f4,
+        type: 3}
+    - target: {fileID: 114687192649964530, guid: e935b7be76e09034c87822c5a770c155,
+        type: 2}
+      propertyPath: m_Text
+      value: Carrot
+      objectReference: {fileID: 0}
     - target: {fileID: 1006530049526572, guid: e935b7be76e09034c87822c5a770c155, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1778060427}
     - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
-      propertyPath: LevelCanvas
+      propertyPath: VegetablePatch
       value: 
-      objectReference: {fileID: 1503388639}
-    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
+      objectReference: {fileID: 1418954735}
+    - target: {fileID: 114256793387475434, guid: e935b7be76e09034c87822c5a770c155,
         type: 2}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 223554860316929216, guid: e935b7be76e09034c87822c5a770c155,
-        type: 2}
-      propertyPath: m_RenderMode
-      value: 0
+      propertyPath: VegetableName
+      value: Carrot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e935b7be76e09034c87822c5a770c155, type: 2}
@@ -754,11 +739,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbb71414c7456724c8fa3a8815d182fb, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1503388639 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1810885667303496, guid: d735f08721c92b14d98158f858c0ae33,
-    type: 2}
-  m_PrefabInternal: {fileID: 1786793969}
 --- !u!1001 &1540716741
 Prefab:
   m_ObjectHideFlags: 0
@@ -1034,6 +1014,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223897858984463716, guid: d735f08721c92b14d98158f858c0ae33,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1778060427}
     - target: {fileID: 114773196229068554, guid: d735f08721c92b14d98158f858c0ae33,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -1044,26 +1029,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1778060424}
-    - target: {fileID: 114082104643820080, guid: d735f08721c92b14d98158f858c0ae33,
-        type: 2}
-      propertyPath: m_Text
-      value: Carrot Found
-      objectReference: {fileID: 0}
-    - target: {fileID: 223897858984463716, guid: d735f08721c92b14d98158f858c0ae33,
-        type: 2}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 223897858984463716, guid: d735f08721c92b14d98158f858c0ae33,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 223897858984463716, guid: d735f08721c92b14d98158f858c0ae33,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1778060427}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d735f08721c92b14d98158f858c0ae33, type: 2}
   m_IsPrefabParent: 0

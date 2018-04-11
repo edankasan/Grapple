@@ -14,18 +14,50 @@ public class MouseManager {
     {
         if (mouseKey < 0 || mouseKey > 2)
         {
-            Debug.LogError("WRITE ME!");
             return;
         }
 
         Funcs[state][mouseKey] = func;
     }
 
+    public void InitiateKeyControls(Dictionary<KeyState, MouseFunc[]> preset)
+    {
+        Funcs = new Dictionary<KeyState, MouseFunc[]>();
+        Funcs.Add(KeyState.Pressed, new MouseFunc[3]);
+        Funcs.Add(KeyState.Held, new MouseFunc[3]);
+        Funcs.Add(KeyState.Released, new MouseFunc[3]);
+
+        if (checkPresetValidity(preset) == false)
+            return;
+
+        foreach (KeyState state in preset.Keys)
+        {
+            Funcs[state] = preset[state];
+        }
+    }
+
+    bool checkPresetValidity(Dictionary<KeyState, MouseFunc[]> preset)
+    {
+        if (preset.Count != 3)
+        {
+            return false;
+        }
+
+        foreach (KeyState state in preset.Keys)
+        {
+            if (preset[state].Length != 3)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void CheckMouseContext()
     {
         if (EventSystem.current.IsPointerOverGameObject() == true)
         {
-            Debug.Log("We are over an event system GO");
             Funcs[KeyState.Held][0] = () => { };
             Funcs[KeyState.Released][0] = () => { };
             Funcs[KeyState.Pressed][0] = () => { };
@@ -52,41 +84,6 @@ public class MouseManager {
         }
     }
 
-    public void InitiateKeyControls(Dictionary<KeyState, MouseFunc[]> preset)
-    {
-        Funcs = new Dictionary<KeyState, MouseFunc[]>();
-        Funcs.Add(KeyState.Pressed, new MouseFunc[3]);
-        Funcs.Add(KeyState.Held, new MouseFunc[3]);
-        Funcs.Add(KeyState.Released, new MouseFunc[3]);
-
-        if (checkPresetValidity(preset) == false)
-            return;
-
-        foreach (KeyState state in preset.Keys)
-        {
-            Funcs[state] = preset[state];
-        }
-    }
-
-    bool checkPresetValidity(Dictionary<KeyState, MouseFunc[]> preset)
-    {
-        if (preset.Count != 3)
-        {
-            Debug.LogError("WRITE ME!");
-            return false;
-        }
-
-        foreach (KeyState state in preset.Keys)
-        {
-            if (preset[state].Length != 3)
-            {
-                Debug.LogError("WRITE ME!");
-                return false;
-            }
-        }
-
-        return true;
-    }
     public Dictionary<KeyState, MouseFunc[]> GetFuncs()
     {
         return Funcs;
