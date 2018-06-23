@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-        if (collision.collider.GetComponent<Rigidbody2D>() != null)
+        if (collision.collider.GetComponent<Rigidbody2D>() != null && collision.collider.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Dynamic)
         {
             if (collision.collider.GetComponent<Rigidbody2D>().velocity.x != 0 && (rb2d.velocity.x == 0 || rb2d.velocity.x == -collision.collider.GetComponent<Rigidbody2D>().velocity.x))
             {

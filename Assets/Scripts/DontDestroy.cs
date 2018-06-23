@@ -9,5 +9,6 @@ public class DontDestroy : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        Application.targetFrameRate = 60;
     }
 }

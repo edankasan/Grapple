@@ -3,11 +3,11 @@
   <VeggieList>
     <VeggieClass>
       <name>Broccoli</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Carrot</name>
-      <found>false</found>
+      <found>true</found>
     </VeggieClass>
     <VeggieClass>
       <name>Corn</name>
